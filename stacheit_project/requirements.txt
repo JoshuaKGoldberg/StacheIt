@@ -1,3 +1,11 @@
-Django==1.6.2
+Django==1.5.5
 argparse==1.2.1
+django-mongodb-engine==0.5.1
+django-social-auth==0.7.28
+djangotoolbox==1.6.2
+httplib2==0.8
+oauth2==1.5.211
+pymongo==2.6.3
+python-oauth2==0.5.0
+python-openid==2.2.5
 wsgiref==0.1.2
