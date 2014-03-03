@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import auth
 from django.core.context_processors import csrf
 
@@ -21,7 +21,10 @@ def auth_view(request):
 
 def loggedin(request):
 	if request.user:
-		return render_to_response('loggedin.html', {'full_name' : request.user.username})
+		if request.user.is_active:
+			return render_to_response('loggedin.html', {'full_name' : request.user.username})
+		else:
+			return HttpResponseRedirect('/accounts/login/')
 
 def invalid_login(request):
 	return render_to_response('invalid_login.html')

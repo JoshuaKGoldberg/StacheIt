@@ -26,7 +26,19 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+FACEBOOK_APP_ID              = '143466399084617'
+FACEBOOK_API_SECRET          = '570b530d2b799f25c2b6798f2a9b0f92'
 
+LOGIN_URL          = '/login-form/'
+LOGIN_REDIRECT_URL = '/members/'
+LOGIN_ERROR_URL    = '/login-error/'
+
+
+
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.facebook.FacebookBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
 # Application definition
 
 INSTALLED_APPS = (
@@ -37,7 +49,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social_auth',
-    'authentication'
+    'authentication',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -59,8 +71,11 @@ WSGI_APPLICATION = 'stacheit_project.wsgi.application'
 
 DATABASES = {
     'default' : {
-        'ENGINE' : 'django_mongodb_engine',
-        'NAME' : 'stache'
+        'ENGINE' : 'django.db.backends.postgresql_psycopg2',
+        'NAME' : 'stache',
+        'USER' : 'admin',
+        'PASSWORD' : 'admin',
+        'HOST': 'localhost'
     }
 }
 
