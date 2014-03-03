@@ -16,4 +16,8 @@ urlpatterns = patterns('',
     url(r'^accounts/logout/$', 'stacheit_project.views.logout'),
     url(r'^accounts/loggedin/$', 'stacheit_project.views.loggedin'),
     url(r'^accounts/invalid/$', 'stacheit_project.views.invalid_login'),
+    url(r'^accounts/register/$', 'stacheit_project.views.register_user'),
+    url(r'^accounts/register_success/$', 'stacheit_project.views.register_success'),
 )
+
+
