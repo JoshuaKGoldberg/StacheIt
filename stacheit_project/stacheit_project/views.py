@@ -39,6 +39,7 @@ def logout(request):
 	return render_to_response('logout.html', c)
 
 def register_user(request):
+	form = StacheUserCreationForm()
 	if request.method == "POST":
 		form = StacheUserCreationForm(request.POST)
 		if form.is_valid():
@@ -46,7 +47,7 @@ def register_user(request):
 			return HttpResponseRedirect('/accounts/register_success/')
 	args = {}
 	args.update(csrf(request))
-	args['form'] = StacheUserCreationForm()
+	args['form'] = form
 
 	return render_to_response('register.html', args)
 
