@@ -1,0 +1,82 @@
+@font-face
+{
+font-family: CenturyGothic;
+src: url('Century_Gothic.TTF');
+}
+
+html
+{
+ background: #fffcd8;
+}
+
+:focus
+{
+ outline:none;
+ box-shadow:0 0 5px  #B55D4B;
+}
+
+input 
+{
+ margin: 0 0 8px 0;
+}
+
+#registration-form
+{
+ width: 300px;
+ text-align: center;
+ font-family: CenturyGothic;
+ margin: 0 auto;
+}
+
+#registration-form img
+{
+ width: 100%;
+ height: auto;
+ margin: 0 auto;
+}
+
+.helptext { display:none; }
+.errorlist
+{
+ list-style: none;
+ font-size: 10px;
+ color:  #B55D4B;
+ padding: 0 0 0 0;
+}
+
+label
+{
+ font-family: CenturyGothic;
+}
+
+form { }
+input[type=text], input[type=password]
+{
+    background-color: white;
+    border:solid 2px #f5ddbb;
+    border-radius: 8px;
+    color: #979797;
+    height: 36px;
+    padding-left:10px;
+    width: 100%;
+}
+input[type=submit]
+{
+    letter-spacing: 1px;
+    padding: 10px 20px 10px 20px;
+    background-color: #B55D4B;
+    color: white;
+    font-family:CenturyGothic;
+    border-radius: 8px;
+    border: 2px solid #f5ddbb;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+    text-transform:uppercase;
+}
+
+input[type=submit]:hover
+{
+ opacity: .8;
+}
+}
