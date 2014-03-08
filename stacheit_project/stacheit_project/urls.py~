@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'stacheit_project.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'', include('social_auth.urls')),
+    #url(r'', include('social_auth.urls')),
     # LOGGING IN AND OUT
     url(r'^accounts/login/$', 'stacheit_project.views.login'),
     url(r'^accounts/auth/$', 'stacheit_project.views.auth_view'),

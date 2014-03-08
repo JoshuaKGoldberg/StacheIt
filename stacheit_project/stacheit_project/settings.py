@@ -36,7 +36,7 @@ LOGIN_ERROR_URL    = '/login-error/'
 
 
 AUTHENTICATION_BACKENDS = (
-    #'social_auth.backends.facebook.FacebookBackend',
+    'social_auth.backends.facebook.FacebookBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 # Application definition
@@ -48,7 +48,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     #'social_auth',
+     'social_auth',
     'authentication',
 )
 
