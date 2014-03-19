@@ -1,4 +1,40 @@
+{% load staticfiles %}
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css\library.css' %}" />
+
 {% block content %}
-<h2>Hi {{ full_name }}, you're logged In!</h2>
-<a href="/accounts/logout/">Logout</a>
+<div id="wrapper">
+
+	<div id="header">
+		<img id="logo" src = "{% static 'images\stache-it.png' %}" alt="Logo"/>
+
+		<div id="profile">
+			<img id="profilePic" src="{% static 'images\defaultProfile.jpg' %}" />
+			<span>{{ full_name }}</span>
+			<a id="logoutLink" href="/accounts/logout/">Logout</a>
+		</div>
+	</div>
+
+	<div id="library">
+		<h3 id="stachesHeadline"> My Staches </h3>
+		<div class="list-group">
+		  <a href="http://www.technobuffalo.com/2014/03/19/google-chromecast-now-available-in-11-international-markets/" class="list-group-item">
+		    <h4 class="list-group-item-heading">Google Chromecast Now Available in 11 International Markets</h4>
+		    <p class="list-group-item-text">As expected, the Google Chromecast is beginning its international roadshow today. Google confirmed that, starting Wednesday, the Chromecast can now be purchased in Canada, Denmark, Finland, France, Germany, Italy</p></a>
+		  </a>
+		  <a href="http://www.technobuffalo.com/2014/03/19/pandora-to-raise-subscription-prices-in-may/" class="list-group-item">
+		    <h4 class="list-group-item-heading">Pandora to Raise Subscription Prices in May</h4>
+		    <p class="list-group-item-text">Pandora on Wednesday announced that, due to the increase in royalty rates, it will increase the cost of its monthly subscription starting in May. The company said that it will also eliminate its annual $36 option, forcing everyone to join</p>
+		  </a>
+		  <a href="http://www.technobuffalo.com/2014/03/19/amazon-prime-price-hike-turning-customers-off/" class="list-group-item">
+		    <h4 class="list-group-item-heading">Amazon Prime Price Hike Turning Customers Off</h4>
+		    <p class="list-group-item-text">On March 13 Amazon announced that it was increasing the price of Amazon Prime from $79 per year to $99 per year – a $20 price hike that we argued actually isn’t so bad, especially if you order products frequently</p>
+		  </a>
+		  <a href="http://www.technobuffalo.com/2014/03/18/google-planning-to-discontinue-google-voice-in-favor-of-hangouts/" class="list-group-item">
+		    <h4 class="list-group-item-heading">Google Planning To Discontinue Google Voice In Favor of Hangouts</h4>
+		    <p class="list-group-item-text">There’s an entire laundry list of discontinued Google services, with some big names on the list: Google Wave, Picnik, Meebo, iGoogle and Google Reader, among many more. According to 9to5Google, Google Voice will soon receive </p>
+		  </a>
+		</div>
+	</div>
+</div>
 {% endblock %}
