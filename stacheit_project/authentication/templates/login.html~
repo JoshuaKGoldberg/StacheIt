@@ -9,7 +9,7 @@
 		<p class="error"> Invalid username or password </p>
 	{% endif %}
 
-	<form action='/accounts/auth/' method='post'>
+	<form action='/accounts/auth/' method='post'>{% csrf_token %}
 <img id = "envelope" src = "{% static 'images\envelope.png' %}" />
 		<label for="username"></label>
 		<input type="text" name="username" placeholder="" value="" id="username">

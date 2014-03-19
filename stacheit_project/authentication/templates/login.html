@@ -15,10 +15,10 @@
 		<input type="text" name="username" placeholder="" value="" id="username">
 <img id = "key" src = "{% static 'images\key.png' %}" />
 		<label for="password"></label>
-		<input type ="text" name="password" placeholder="" value="" id="password">
+		<input type ="password" name="password" placeholder="" value="" id="password">
 		<input type="submit" value="login" />
 <div id = "fb-login" ><a href="{% url 'socialauth_begin' 'facebook' %}"><img src = "{% static 'images\fb-logo.png' %}"/>Login with Facebook</a></div>
 	</form>
 <br>
 </div>
-{% endblock %} 
+{% endblock %}  
