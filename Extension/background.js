@@ -1,4 +1,6 @@
-// Create the context menu (right click) action for staching a page
+/**
+* Creates the context menu (right click) action for staching a page
+*/
 chrome.contextMenus.create({
   "title": "Stache this page!",
   "contexts": ["page", "selection", "link", "editable", "image", "video", "audio"],
