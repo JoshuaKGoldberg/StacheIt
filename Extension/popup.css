@@ -1,13 +1,19 @@
 html {
   background: #fffcd7;
   width: 280px;
+  height: 100%;
   min-width: 100%;
   min-height: 100%;
   font-family: "Century Gothic";
 }
 
+body {
+  height: 96%;
+}
+
 #main_out {
   margin: auto;
+  height: 100%;
 }
 
 #dash {
@@ -15,6 +21,10 @@ html {
   width: 245px;
   height: 1px;
   background: #f5d9ab;
+}
+
+#form_login {
+  padding-bottom: 14px;
 }
 
 input {
@@ -32,8 +42,11 @@ input {
   color: #e0be97;
 }
 
-div.submit,
-input[type=submit] {
+.submit,
+.button,
+input[type=submit],
+input[type=buttom]
+ {
   padding: 7px;
   width: 241px; /* 245px - (7px + 7px) */
   background: #b55d4b;
@@ -42,7 +55,23 @@ input[type=submit] {
   cursor: pointer;
 }
 
+input[type=submit] {
+  font-weight: bold;
+}
+
 input:focus {
   /* border-width: 3px; */
   outline: 0;
+}
+
+#form_submits input.submit:first-of-type  {
+  margin: 14px auto -1px;
+  border-radius: 14px 14px 0 0;
+}
+#form_submits input.submit:last-of-type {
+  margin-top: 0;
+  border-radius: 0 0 14px 14px;
+}
+#form_submits input.submit:first-of-type:last-of-type {
+  border-radius: 14px;
 }
