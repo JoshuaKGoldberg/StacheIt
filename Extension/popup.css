@@ -1,0 +1,48 @@
+html {
+  background: #fffcd7;
+  width: 280px;
+  min-width: 100%;
+  min-height: 100%;
+  font-family: "Century Gothic";
+}
+
+#main_out {
+  margin: auto;
+}
+
+#dash {
+  margin: 7px auto 21px;
+  width: 245px;
+  height: 1px;
+  background: #f5d9ab;
+}
+
+input {
+  display: block;
+  margin: 7px auto;
+  padding: 7px 7px 7px 28px;
+  width: 210px; /* 245px - (7px + 28px) */
+  border: 0;
+  border-radius: 14px;
+  border: 1px solid #efc28b;
+  text-align: left;
+  font-size: 1.17em;
+  font-family: "Century Gothic";
+  transition: 700ms all;
+  color: #e0be97;
+}
+
+div.submit,
+input[type=submit] {
+  padding: 7px;
+  width: 241px; /* 245px - (7px + 7px) */
+  background: #b55d4b;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+input:focus {
+  /* border-width: 3px; */
+  outline: 0;
+}

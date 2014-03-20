@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Stache It Popup</title>
+    <style>
+    </style>
+    <link rel="stylesheet" href="default.css">
+    <link rel="stylesheet" href="popup.css">
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <div id="main_out" class="vert-container">
+      <div id="main_in" class="vert-center">
+      
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img src="media/logo-256.png"></a>
+        
+        <div id="dash"></div>
+        
+        <!-- This should be hidden if the user is logged in -->
+        <form id="form_login" name="form_login" action="" target="_blank">
+          <input id="email" name="email" type="email" placeholder="email">
+          <input id="password" name="password" type="password" placeholder="password">
+          <input id="login_submit" type="submit" value="Log me in!">
+        </form>
+        
+        <!-- This should be hidden if the user isn't logged in -->
+        <input id="stache" type="submit" value="Stache this page!" onclick="StacheIt.savePage(event)">
+      </div>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,8 @@
+.vert-container {
+  display: table;
+}
+
+.vert-center {
+  display: table-cell;
+  vertical-align: middle;
+}
