@@ -29,9 +29,9 @@ ALLOWED_HOSTS = []
 FACEBOOK_APP_ID              = '143466399084617'
 FACEBOOK_API_SECRET          = '570b530d2b799f25c2b6798f2a9b0f92'
 
-LOGIN_URL          = '/login-form/'
-LOGIN_REDIRECT_URL = '/members/'
-LOGIN_ERROR_URL    = '/login-error/'
+LOGIN_URL          = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/accounts/loggedin/'
+LOGIN_ERROR_URL    = '/accounts/invalid/'
 
 
 
@@ -48,7 +48,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     'social_auth',
+    'social_auth',
     'authentication',
 )
 

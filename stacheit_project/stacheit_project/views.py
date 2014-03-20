@@ -26,7 +26,7 @@ def loggedin(request):
 		if request.user.is_active:
 			return render_to_response('loggedin.html', {'full_name' : request.user.username})
 		else:
-			return HttpResponseRedirect('/accounts/login/')
+			return HttpResponseRedirect('')
 
 def invalid_login(request):
 	return render_to_response('invalid_login.html')

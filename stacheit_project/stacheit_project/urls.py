@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('social_auth.urls')),
     # LOGGING IN AND OUT
-    url(r'^accounts/login/$', 'stacheit_project.views.login'),
+    url(r'^$', 'stacheit_project.views.login'),
     url(r'^accounts/auth/$', 'stacheit_project.views.auth_view'),
     url(r'^accounts/logout/$', 'stacheit_project.views.logout'),
     url(r'^accounts/loggedin/$', 'stacheit_project.views.loggedin'),
