@@ -6,33 +6,36 @@ function StacheItHandler(settings) {
   var self = (this === window) ? {} : this,
       
       // What this extension is known as
-      title = "Stache It",
+      title,
       
       // The text description of the extension
-      description = "If you have a question and must Stache It, I ask you to shave it for later.",
+      description,
       
       // Text for context menu and other interactivity
-      action_blurb = "Stache this page!",
+      action_blurb,
       
       // URLs of the project (in production, this will be something like "http://www.stache-it.com"
-      url = "http://127.0.0.1:8000",
-      url_login = "/login",
+      url,
+      url_login,
       
       // Page arguments, parsed by self.parseArguments()
       args,
       
       // HTML elements in the popup
-      form_login = document.getElementById("form_login"),
-      input_email = document.getElementById("email"),
-      input_password = document.getElementById("password"),
-      butt_stacher = document.getElementById("stacher"),
+      form_login,
+      input_username,
+      input_password,
+      input_quicker,
+      view_fuller,
+      view_switcher,
+      butt_stacher,
       
       // Keys for retrieving data from localStorage
-      is_logged_in = "is_logged_in",
+      is_logged_in,
       
       // Equivalent string keys for localStorage
-      ls_true = "true",
-      ls_false = "false";
+      ls_true,
+      ls_false;
   
   
   /* HTML modifiers
@@ -42,12 +45,17 @@ function StacheItHandler(settings) {
   * On page load, mess with the HTML elements based on the user's status
   */
   self.adjustPage = function() {
-    // Fill "email" and "password" into the inputs, if given
-    if(args.hasOwnProperty("email")) {
-      input_email.value = args.email;
+    // input#view_switcher should redirect to the main page
+    view_switcher.onclick = view_switcher.onsubmit = function() {
+      input_fuller.checked = true;
+      form_login.action = "";
+      form_login.submit();
     }
-    if(args.hasOwnProperty("password")) {
-      input_password.value = args.password;
+    
+    // The regular form#form_login submit should redirect to the StacheIt login
+    form_login.action = url + '/' + url_login;
+    form_login.onsubmit = function() {
+      input_quicker.checked = true;
     }
     
     // If the user is logged in, hide the login form
@@ -57,6 +65,24 @@ function StacheItHandler(settings) {
     // Otherwise the user is anonymous; hide the stache button
     else {
       butt_stacher.style.display = "none";
+    }
+    
+    // Fill "username" and "password" into the inputs, if given
+    if(args.hasOwnProperty("username")) {
+      input_username.value = args.username;
+    }
+    if(args.hasOwnProperty("password")) {
+      input_password.value = args.password;
+    }
+    
+    // If directed, submit the login form immediately
+    if(args.hasOwnProperty("input_quicker")) {
+      form_login.submit();
+    }
+    
+    // If on the full page, hide the button to show the full page
+    if(args.hasOwnProperty("input_fuller")) {
+      form_submits.removeChild(view_switcher);
     }
   }
   
@@ -166,11 +192,14 @@ function StacheItHandler(settings) {
     action_blurb   = settings.action_blurb   || "Stache this page!",
     
     url            = settings.url            || "http://127.0.0.1:8000",
-    url_login      = settings.url_login      || "/login",
+    url_login      = settings.url_login      || "login",
     
     form_login     = settings.form_login     || document.getElementById("form_login"),
-    input_email    = settings.input_email    || document.getElementById("email"),
+    input_username = settings.username       || document.getElementById("username"),
     input_password = settings.input_password || document.getElementById("password"),
+    input_quicker  = settings.input_quicker  || document.getElementById("input_quicker"),
+    view_fuller    = settings.view_fuller    || document.getElementById("view_fuller"),
+    view_switcher  = settings.view_switcher  || document.getElementById("view_switcher"),
     butt_stacher   = settings.butt_stacher   || document.getElementById("stacher"),
     
     is_logged_in   = settings.is_logged_in   || "is_logged_in",

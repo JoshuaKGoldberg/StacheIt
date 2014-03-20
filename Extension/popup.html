@@ -18,9 +18,16 @@
         
         <!-- This should be hidden if the user is logged in -->
         <form id="form_login" name="form_login" action="" target="_blank">
-          <input id="email" name="email" type="email" placeholder="email">
+          <input id="username" name="username" type="text" placeholder="username">
           <input id="password" name="password" type="password" placeholder="password">
-          <input id="login_submit" type="submit" value="Log me in!">
+          <div id="form_submits">
+            <input id="login_submit" type="submit" class="submit" value="Log me in!">
+            <input id="view_switcher" type="button" class="submit" value="Full page view">
+          </div>
+          <div id="hidden_inputs" style="display:none">
+            <input id="input_fuller" name="input_fuller" type="checkbox">
+            <input id="input_quicker" name="input_quicker" type="checkbox">
+          </div>
         </form>
         
         <!-- This should be hidden if the user isn't logged in -->

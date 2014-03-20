@@ -1,6 +1,9 @@
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'css\login.css' %}" />
 
+{% load staticfiles %}
+<script type="text/javascript" src="{% static 'js\login.js' %}"></script>
+
 {% block content %}
 <div id = "login-form">
   <img src = "{% static 'images\stache-it.png' %}" />
@@ -9,7 +12,7 @@
   <p class="error">Invalid username or password</p>
   {% endif %}
 
-  <form action='/accounts/auth/' method='post'>{% csrf_token %}
+  <form id="login_form" action='/accounts/auth/' method='post'>{% csrf_token %}
     <img id = "envelope" src = "{% static 'images\envelope.png' %}" />
       <label for="username"></label>
       <input type="text" name="username" placeholder="username" value="" id="username">
