@@ -1,4 +1,0 @@
-{% block content %}
-
-<p> You have registered! Please <a href="/accounts/login">log in</a> and test your new account.</p>
-{% endblock %}

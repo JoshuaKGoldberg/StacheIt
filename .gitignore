@@ -3,3 +3,11 @@
 *.pyc
 local_settings.py
 StacheIt/*
+
+*.css~
+*.js~
+*.htm~
+*.html~
+*.php~
+*.py~
+Thumbs.db
