@@ -53,3 +53,6 @@ def register_user(request):
 
 def register_success(request):
 	return render_to_response('register_success.html')
+
+def user_info(request):
+	return render_to_response('user_info.html')
