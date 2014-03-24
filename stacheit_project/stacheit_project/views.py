@@ -55,4 +55,8 @@ def register_success(request):
 	return render_to_response('register_success.html')
 
 def user_info(request):
-	return render_to_response('user_info.html')
+  if request.user:
+    if request.user.is_active:
+      return render_to_response('user_info.html', {'username' : request.user.username})
+    
+  return render_to_response('user_info.html')
