@@ -12,15 +12,27 @@
   
   "background": {
     "scripts": [
+      "objects/StacheItBackground.js",
+      "objects/StacheItParser.js",
       "background.js"
     ]
   },
   
   "permissions": [
     "tabs",
+    "activeTab",
     "<all_urls>",
-    "contextMenus"
+    "http://*/*",
+    "contextMenus",
+    "webRequest",
+    "webRequestBlocking"
   ],
+    
+  "externally_connectable": {
+    "matches": [
+      "*://*.zonejm.com/*"
+    ]
+  },
   
   "icons": {
     "16": "media/icon-16.png",

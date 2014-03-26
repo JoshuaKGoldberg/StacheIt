@@ -6,34 +6,14 @@
     </style>
     <link rel="stylesheet" href="default.css">
     <link rel="stylesheet" href="popup.css">
+    <script src="objects/StacheItPopup.js"></script>
     <script src="popup.js"></script>
   </head>
   <body>
-    <div id="main_out" class="vert-container">
-      <div id="main_in" class="vert-center">
-      
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img src="media/logo-256.png"></a>
-        
-        <div id="dash"></div>
-        
-        <!-- This should be hidden if the user is logged in -->
-        <form id="form_login" name="form_login" action="" target="_blank">
-          <input id="username" name="username" type="text" placeholder="username">
-          <input id="password" name="password" type="password" placeholder="password">
-          <div id="form_submits">
-            <input id="login_submit" type="submit" class="submit" value="Log me in!">
-            <input id="view_switcher" type="button" class="submit" value="Full page view">
-          </div>
-          <div id="hidden_inputs" style="display:none">
-            <input id="input_fuller" name="input_fuller" type="checkbox">
-            <input id="input_quicker" name="input_quicker" type="checkbox">
-          </div>
-        </form>
-        
-        <!-- This should be hidden if the user isn't logged in -->
-        <input id="stacher" type="submit" value="Stache this page!" onclick="StacheIt.savePage(event)">
+    <div id="temp_holder" class="vert-container">
+      <div class="vert-center">
+        <small>loading...</small>
       </div>
     </div>
   </body>
 </html>
-
