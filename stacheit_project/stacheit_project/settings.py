@@ -26,8 +26,8 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-FACEBOOK_APP_ID              = '143466399084617'
-FACEBOOK_API_SECRET          = '570b530d2b799f25c2b6798f2a9b0f92'
+SOCIAL_AUTH_FACEBOOK_KEY     = '143466399084617'
+SOCIAL_AUTH_FACEBOOK_SECRET  = '570b530d2b799f25c2b6798f2a9b0f92'
 
 LOGIN_URL          = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/accounts/loggedin/'
@@ -36,7 +36,8 @@ LOGIN_ERROR_URL    = '/accounts/invalid/'
 
 
 AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.facebook.FacebookBackend',
+    'social.backends.facebook.FacebookAppOAuth2',
+    'social.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 # Application definition
@@ -48,7 +49,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'social_auth',
+    'social.apps.django_app.default',
     'authentication',
 )
 
