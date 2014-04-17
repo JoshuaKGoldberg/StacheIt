@@ -50,7 +50,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'social_auth',
     'authentication',
-    'south'
+    'south',
+    'tastypie'
 )
 
 MIDDLEWARE_CLASSES = (
