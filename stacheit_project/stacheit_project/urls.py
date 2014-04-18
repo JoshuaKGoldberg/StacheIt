@@ -2,7 +2,11 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
 import authentication.views
+from stacheit_project.api import ArticleResource, AnnotationResource
 admin.autodiscover()
+
+article_resource = ArticleResource()
+annotation_resource = AnnotationResource()
 
 urlpatterns = patterns('',
     # Examples:
@@ -18,7 +22,9 @@ urlpatterns = patterns('',
     url(r'^accounts/invalid/$', 'stacheit_project.views.invalid_login'),
     url(r'^accounts/register/$', 'stacheit_project.views.register_user'),
     url(r'^accounts/register_success/$', 'stacheit_project.views.register_success'),
-    url(r'^accounts/user_info/$', 'stacheit_project.views.user_info')
+    url(r'^accounts/user_info/$', 'stacheit_project.views.user_info'),
+    url(r'^api/', include(article_resource.urls)),
+    url(r'^api/', include(annotation_resource.urls))
 )
 
 
