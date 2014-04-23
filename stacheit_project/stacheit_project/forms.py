@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from authentication.models import Stacher
 
 class StacheUserCreationForm(forms.ModelForm):
     """
@@ -54,14 +55,17 @@ class StacheUserCreationForm(forms.ModelForm):
             )
         return password2
 
-    def save(self, commit=True):
+    def save(self, commit=True): 
         user = super(StacheUserCreationForm, self).save(commit=False)
         user.first_name = self.cleaned_data["first_name"]
         user.last_name = self.cleaned_data["last_name"]
         user.email = self.cleaned_data["email"]
         user.set_password(self.cleaned_data["password2"])
+
         if commit:
             user.save()
+            stacher = Stacher(user= user, display_name=user.first_name, email=user.email)
+            stacher.save()
         return user
 
 
