@@ -31,6 +31,9 @@ def loggedin(request):
 def invalid_login(request):
 	return render_to_response('invalid_login.html')
 
+def profile(request):
+	return render_to_response('profile.html');
+
 def logout(request):
 
 	auth.logout(request)

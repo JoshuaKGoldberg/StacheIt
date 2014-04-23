@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load staticfiles %}
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css\profile.css' %}" />
+
+{% block content %}
+<head>
+	<title>User Profile</title>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+<body>
+<div id="wrapper">
+	<div class="container">
+		<div id="header" class="row">
+			<div id="logoContainer" class="col-sm-12 col-md-9">
+				<img id="logo" src = "{% static 'images\stache-it.png' %}" alt="Logo"/>
+			</div>
+			<div class="col-sm-12 col-md-3">
+				<div id="buttonContainer">										
+					<a id="libraryLink" href="/accounts/loggedin"><input class="buttonStyle" id="libraryButton" type="submit" value="My Library"/></a>
+					<a id="logoutLink" href="/accounts/logout/"><input class="buttonStyle" id="logoutButton" type="submit" value="Logout"/></a>		
+				</div>
+			</div>
+		</div>
+		<hr/>
+		<div id="userInfo" class="row">
+			<div id="picture">
+				<img id="profilePic" src="{% static 'images\defaultProfile.jpg' %}" alt="Profile Picture"/>
+			</div>
+			<div id="textInfo">
+				<p> {% if username %}
+						{{ username }}
+					{% else %}
+						KanyeKanye
+					{% endif %} </p>
+				<p> Email Address </p>
+				<p> Join Date: 1/1/2014! <p>
+			</div>
+		</div>	
+		<div id="mostRecent" class="row">				
+			<h3 id="stachesHeadline"> Most Recent Staches </h3>
+			<div class="list-group">
+			  <a href="http://www.technobuffalo.com/2014/03/19/google-chromecast-now-available-in-11-international-markets/" class="list-group-item">
+			    <h4 class="list-group-item-heading">Google Chromecast Now Available in 11 International Markets</h4>			    
+			  </a>
+			  <a href="http://www.technobuffalo.com/2014/03/19/pandora-to-raise-subscription-prices-in-may/" class="list-group-item">
+			    <h4 class="list-group-item-heading">Pandora to Raise Subscription Prices in May</h4>			    
+			  </a>
+			  <a href="http://www.technobuffalo.com/2014/03/19/amazon-prime-price-hike-turning-customers-off/" class="list-group-item">
+			    <h4 class="list-group-item-heading">Amazon Prime Price Hike Turning Customers Off</h4>			    
+			  </a>		  
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+{% endblock %}

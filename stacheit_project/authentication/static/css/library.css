@@ -1,35 +1,6 @@
-html
-{
-	background: #fffcd8;
-}
-
 body
 {
-	background: #fffcd8;	
-}
-
-#header
-{
-	text-align: center;
-}
-
-#profile
-{
-	display: none;
-}
-
-#library
-{
-	text-align: center;
-	margin-left: 10px;
-	margin-right: 10px;
-}
-
-#logo
-{
-	width: 200px;
-	margin-left: auto;
-	margin-right: auto;
+	background: #FFFCD8;	
 }
 
 @font-face
@@ -38,54 +9,89 @@ body
 	src: url('Century_Gothic.TTF');
 }
 
-@media (min-width: 768px) {
-	#header
-	{		
-		vertical-align: middle;
-		height: auto;
-		overflow: hidden;	
+#stachesHeadline
+{
+	text-align: center;
+}
+
+#logo
+{
+	width: 200px;
+	margin-top: 3%;
+}
+
+#header
+{
+	text-align: center;
+}
+
+#logoContainer
+{
+	text-align: center;
+}
+
+#profile
+{
+	margin-top: 10px;
+	text-align: center;
+}
+
+#profilePic
+{
+	display: none;
+}
+
+#displayName
+{
+	margin-right: 25px;
+}
+
+#logoutButton
+{
+	width: 70px;
+	color: white;
+	background-color: #B55D4B;
+	border-color: #D4A672;
+	border-radius: 5px;		
+	padding: 5px;
+	margin-left: 10px;
+}
+
+#logoutButton:hover
+{
+	border-color: black;
+}
+
+#library
+{
+	width: inherit;	
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {	
+	#logoContainer
+	{
+		text-align: left;
 	}
 
-	#logo
+	#library
 	{
-		float: left;
-		display: inline;
-		width: 200px;
-		margin-left: 10px;
-		margin-top: 10px;
+		width: 600px;
+		margin-left: auto;
+		margin-right: auto;		
 	}
 
 	#profile
 	{
-		display: inline-block;
-		vertical-align: middle;
-		float: right;		
-		margin-top: 10px;
-		margin-right: 10px;
+		margin-top: 25%; 
 	}
 
 	#profilePic
 	{
+		display: inline-block;
 		width: 40px;
 		margin-right: 5px;
-	}
-
-	#logoutLink
-	{
-		margin-left: 5px;
-		margin-right: 5px;
-	}
-
-	#stachesHeadline
-	{
-		text-align: center;
-	}
-
-	#library 
-	{
-		width: 500px;
-		text-align: justify;
-		margin-right: auto;
-		margin-left: auto;		
 	}
 }
