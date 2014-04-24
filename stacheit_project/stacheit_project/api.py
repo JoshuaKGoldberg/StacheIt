@@ -15,7 +15,7 @@ class StacherResource(ModelResource):
     class Meta:
         queryset = Stacher.objects.all()
         resource_name = "stacher"
-        allowed_methods = ['get']
+        allowed_methods = ['get', 'post']
 
 class AnnotationResource(ModelResource):
     class Meta:
