@@ -22,7 +22,10 @@
  */
 function StacheItPopup(settings) {
     "use strict";
-    var self = (this === window) ? {} : this,
+    if(!this || this === window) {
+        return new StacheItCommunicator(settings);
+    }
+    var self = this,
 
         // External URLs
         url,

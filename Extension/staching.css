@@ -1,0 +1,34 @@
+#stacheit_dialog_out {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(49,49,49,.84);
+    z-index: 100;
+    font-family: Century Gothic;
+}
+
+#stacheit_dialog_mid {
+    display: table;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+#stacheit_dialog_in{
+    display: table-cell;
+    vertical-align: middle;
+    z-index: 100;
+    text-align: center;
+}
+
+#stacheit_dialog {
+    padding: 14px;
+    background: rgba(255,252,215,.91);
+}
+
+#stacheit_dialog_prog {
+    padding: 7px;
+    background: rgba(255,252,215,.84);
+}

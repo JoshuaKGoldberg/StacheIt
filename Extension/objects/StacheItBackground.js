@@ -26,7 +26,10 @@
  */
 function StacheItBackground(settings) {
     "use strict";
-    var self = (this === window) ? {} : this,
+    if(!this || this === window) {
+        return new StacheItCommunicator(settings);
+    }
+    var self = this,
 
         // ID of the context menu item
         context_menu_item;
@@ -75,14 +78,15 @@ function StacheItBackground(settings) {
      * disabled while this is happening.
      */
     self.stachePage = function () {
-        // Execute the script using the parser (which has to be evaluated first)
-        chrome.tabs.executeScript( null, {"file": "objects/StacheItParser.js"}, function() {
-            chrome.tabs.executeScript(null, {"file": "content.js"});
-        });
+        // Add the CSS for the staching dialog
+        chrome.tabs.insertCSS(null, {"file": "staching.css"});
         
-        // Timestamping ensures multiple staching attempts don't conflict
-        var timestamp = request_timestamp = Date.now(),
-            tabs;
+        // Execute the script using the parser (which has to be evaluated first), then send it out
+        chrome.tabs.executeScript( null, {"file": "objects/StacheItParser.js"}, function() {
+            chrome.tabs.executeScript( null, {"file": "objects/StacheItCommunicator.js"}, function() {
+                chrome.tabs.executeScript(null, {"file": "content.js"});
+            });
+        });
 
         return self;
     }

@@ -17,7 +17,10 @@
  */
 function StacheItParser(settings) {
     "use strict";
-    var self = (this === window) ? {} : this,
+    if(!this || this === window) {
+        return new StacheItCommunicator(settings);
+    }
+    var self = this,
         
         // The StacheIt extension ID
         extension_id = "jioafaggppgenoaccpcdddnlehojklfl",
@@ -81,7 +84,7 @@ function StacheItParser(settings) {
      * 
      * @private
      */
-    function parsePageHTML() {
+    function parsePageHTML () {
         // Create the dummy document for parsing, and give it the page_html
         dummy_doc = document.implementation.createHTMLDocument("");
         dummy_doc.documentElement.innerHTML = page_html;
@@ -103,7 +106,7 @@ function StacheItParser(settings) {
      * @param {Node} element
      * @private
      */
-    function cleanElement(element) {
+    function cleanElement (element) {
         var tagName = element.tagName.toLowerCase(),
             arr, len, i;
         
@@ -132,7 +135,7 @@ function StacheItParser(settings) {
      * 
      * @private
      */
-    function parsePageStyle() {
+    function parsePageStyle () {
         var output = "",
             len, i;
         
@@ -151,7 +154,7 @@ function StacheItParser(settings) {
      * @param {CSSStyleSheet} style   A style to be converted to a string
      * @private
      */
-    function getStyleString(style) {
+    function getStyleString (style) {
         var output = "",
             rules = style.rules || [],
             len, i;
