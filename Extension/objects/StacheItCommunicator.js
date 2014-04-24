@@ -15,7 +15,14 @@ function StacheItCommunicator(settings) {
         dialog_mid,
         dialog_in,
         dialog,
-        dialog_prog;
+        dialog_prog,
+        
+        // API URL to POST page information
+        api;
+    
+    self.reset = function(settings) {
+        api = settings.api_url || "http://zonejm.com/api/article/?format=json";
+    };
     
     /**
      * Creates a visible dialog on top of the page
@@ -52,8 +59,25 @@ function StacheItCommunicator(settings) {
      * 
      */
     self.sendPage = function (information, onUpdate, onFinish) {
+        var ajax = new XMLHttpRequest(),
+            i;
         
+        ajax.onreadystatechange = function(status) {
+            console.log("Change state", status, ajax);
+        }
         
+        // Initiate a POST connection under the URL
+        ajax.open("POST", "http://www.joshuakgoldberg.com/test.php", true);
+        
+        ajax.send("a=b");
+        
+        // // For each bit of information, send it in a separate call
+        // for(i in information) {
+            // if(information.hasOwnProperty(i)) {
+                // ajax.send(i + "=" + encodeURIComponent(information[i]));
+            // }
+        // }
+
         return self;
     }
     
@@ -61,7 +85,7 @@ function StacheItCommunicator(settings) {
      * 
      */
     self.updateProgress = function () {
-        
+        console.log("Updating", arguments);
         
         return self;
     }
@@ -70,8 +94,12 @@ function StacheItCommunicator(settings) {
      * 
      */
     self.finishDisplay = function () {
+        console.log("Finished", arguments);
         
         
         return self;
     }
+    
+    
+    self.reset(settings || {});
 }

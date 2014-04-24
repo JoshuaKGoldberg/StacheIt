@@ -44,14 +44,22 @@ function StacheItParser(settings) {
     
     /* Simple gets & sets (for standalone usage)
      */
-    self.getURL   = function() { return page_url;   }
-    self.getTitle = function() { return page_title; }
-    self.getHTML  = function() { return page_html;  }
-    self.getStyle = function() { return page_style; }
-    self.setURL   = function(url)   { page_url   = String(url);                     return this; }
-    self.setTitle = function(title) { page_title = String(title);                   return this; }
-    self.setHTML  = function(html)  { page_html  = String(html);  parsePageHTML();  return this; }
-    self.setStyle = function(style) { page_style = style;         parsePageStyle(); return this; }
+    self.getAll   = function() {
+        return {
+            "url":   self.getURL(),
+            "title": self.getTitle(),
+            "html":  self.getHTML(),
+            "style": self.getStyle()
+        };
+    };
+    self.getURL   = function() { return page_url;   };
+    self.getTitle = function() { return page_title; };
+    self.getHTML  = function() { return page_html;  };
+    self.getStyle = function() { return page_style; };
+    self.setURL   = function(url)   { page_url   = String(url);                     return self; };
+    self.setTitle = function(title) { page_title = String(title);                   return self; };
+    self.setHTML  = function(html)  { page_html  = String(html);  parsePageHTML();  return self; };
+    self.setStyle = function(style) { page_style = style;         parsePageStyle(); return self; };
     
     
     /**
@@ -69,12 +77,7 @@ function StacheItParser(settings) {
         self.setTitle(message.title || "Unshaved Stache");
         self.setHTML (message.html  || "");   // calls parsePageHTML
         self.setStyle(message.style || []);   // calls parsePageStyle
-        
-        console.log("Finished parsing page.");
-        console.log("HTML:", [page_html]);
-        console.log("Style:", [page_style]);
-        
-        return this;
+        return self;
     }
     
     /**
