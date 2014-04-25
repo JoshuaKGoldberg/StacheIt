@@ -3,7 +3,7 @@
  * -------------
  * Inserted into a page when the context menu option is clicked
  */
- 
+
 // Start parsing the page immediately
 (window.SIParser = new StacheItParser())
     .parsePage({
