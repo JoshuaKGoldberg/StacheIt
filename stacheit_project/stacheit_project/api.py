@@ -1,6 +1,7 @@
 from tastypie.resources import ModelResource
 from authentication.models import Article, Stacher, Annotation
 from tastypie import fields
+from tastypie.authorization import DjangoAuthorization
 
 
 class ArticleResource(ModelResource):
@@ -10,12 +11,14 @@ class ArticleResource(ModelResource):
         queryset = Article.objects.all()
         resource_name = 'article'
         allowed_methods = ['get', 'post', 'put', 'delete']
+	authorization = DjangoAuthorization()
 
 class StacherResource(ModelResource):
     class Meta:
         queryset = Stacher.objects.all()
         resource_name = "stacher"
         allowed_methods = ['get', 'post']
+	authorization = DjangoAuthorization()
 
 class AnnotationResource(ModelResource):
     class Meta:
