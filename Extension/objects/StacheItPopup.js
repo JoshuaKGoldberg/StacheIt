@@ -133,7 +133,7 @@ function StacheItPopup(settings) {
     var reset = self.reset = function (settings) {
         settings = settings || {};
 
-        url            = settings.url            || "http://localhost:8000";
+        url            = settings.url            || "http://zonejm.com";
         url_login_form = settings.url_login_form || "";
         url_login_info = settings.url_login_info || "/accounts/user_info";
 
