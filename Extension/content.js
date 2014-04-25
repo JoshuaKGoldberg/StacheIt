@@ -18,8 +18,6 @@
 (window.SICommunicator = new StacheItCommunicator())
     .createDialog()
     .sendPage(
-        window.SIParser.getAll(),
-        window.SICommunicator.updateProgress,
-        window.SICommunicator.finishDisplay
+        window.SIParser.getAll()
     )
     ;

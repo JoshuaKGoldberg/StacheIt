@@ -21,7 +21,7 @@ function StacheItCommunicator(settings) {
         api;
     
     self.reset = function(settings) {
-        api = settings.api_url || "http://zonejm.com/api/article/?format=json";
+        api = settings.api || "http://zonejm.com/api/article/?format=json";
     };
     
     /**
@@ -39,11 +39,11 @@ function StacheItCommunicator(settings) {
         
         dialog = document.createElement("h1");
         dialog.id = "stacheit_dialog";
-        dialog.innerText = "Staching...";
+        dialog.innerText = "Staching!";
         
         dialog_prog = document.createElement("aside");
         dialog_prog.id = "stacheit_dialog_prog";
-        dialog_prog.innerText = "0%";
+        dialog_prog.innerText = "...wait for it...";
          
         // Add them to each other and the document
         dialog_in.appendChild(dialog);
@@ -58,45 +58,26 @@ function StacheItCommunicator(settings) {
     /**
      * 
      */
-    self.sendPage = function (information, onUpdate, onFinish) {
+    self.sendPage = function (information) {
         var ajax = new XMLHttpRequest(),
-            i;
+            key, input;
+        
+        // Start the AJAX request as a POST to the api
+        ajax.open("POST", api, true);
+        
+        // Send the POST information as JSON
+        // http://zonejm.com/api/article/schema/?format=json
+        ajax.setRequestHeader("Content-type", "application/json");
+        ajax.send(JSON.stringify(information));
         
         ajax.onreadystatechange = function(status) {
-            console.log("Change state", status, ajax);
+            if(ajax.readyState != 4 || ajax.status != 400) {
+                return;
+            }
+            console.log("Got", status, ajax);
+            dialog_prog.innerText = ajax.status + ': ' + ajax.statusText;
         }
-        
-        // Initiate a POST connection under the URL
-        ajax.open("POST", "http://www.joshuakgoldberg.com/test.php", true);
-        
-        ajax.send("a=b");
-        
-        // // For each bit of information, send it in a separate call
-        // for(i in information) {
-            // if(information.hasOwnProperty(i)) {
-                // ajax.send(i + "=" + encodeURIComponent(information[i]));
-            // }
-        // }
 
-        return self;
-    }
-    
-    /**
-     * 
-     */
-    self.updateProgress = function () {
-        console.log("Updating", arguments);
-        
-        return self;
-    }
-    
-    /**
-     * 
-     */
-    self.finishDisplay = function () {
-        console.log("Finished", arguments);
-        
-        
         return self;
     }
     

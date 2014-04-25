@@ -44,12 +44,12 @@ function StacheItParser(settings) {
     
     /* Simple gets & sets (for standalone usage)
      */
-    self.getAll   = function() {
+    self.getAll = function() {
         return {
-            "url":   self.getURL(),
+            "resource_uri": self.getURL(),
             "title": self.getTitle(),
-            "html":  self.getHTML(),
-            "style": self.getStyle()
+            "content": self.getHTML(),
+            // "style": self.getStyle()
         };
     };
     self.getURL   = function() { return page_url;   };
