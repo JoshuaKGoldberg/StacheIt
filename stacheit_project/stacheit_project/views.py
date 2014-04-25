@@ -53,8 +53,8 @@ def render_article(request):
 		print('SUCCESS')
 	 else:
 		print('FAILURE')
-		articles = Article.objects.all();
-		content = articles[0].content; 
+		#articles = Article.objects.all();
+		#content = articles[0].content; 
 		testURL = "http://en.wikipedia.org/wiki/Squirrel";
 		#Create AlchemyAPI Object
 		alchemyapi = AlchemyAPI()
