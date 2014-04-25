@@ -25,6 +25,7 @@ urlpatterns = patterns('',
     url(r'^accounts/register/$', 'stacheit_project.views.register_user'),
     url(r'^accounts/register_success/$', 'stacheit_project.views.register_success'),
     url(r'^accounts/user_info/$', 'stacheit_project.views.user_info'),
+    url(r'^article/$', 'stacheit_project.views.render_article'),
     url(r'^api/', include(article_resource.urls)),
     url(r'^api/', include(annotation_resource.urls)),
     url(r'^api/', include(stacher.urls))

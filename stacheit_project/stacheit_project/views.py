@@ -1,9 +1,16 @@
+from __future__ import print_function
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import auth
 from django.core.context_processors import csrf
 from django.contrib.auth.forms import UserCreationForm
 from .forms import StacheUserCreationForm
+from django.views.decorators.csrf import ensure_csrf_cookie
+from authentication.models import Article, Stacher, Annotation
+from django.utils.safestring import mark_safe
+from django.utils.encoding import force_unicode
+from alchemyapi import AlchemyAPI
+import json
 
 def login(request):
 	c = {}
@@ -33,6 +40,48 @@ def invalid_login(request):
 
 def profile(request):
 	return render_to_response('profile.html');
+
+###############################
+# ARTICLE RENDERING
+###############################
+def escape(html):
+    """Returns the given HTML with ampersands, quotes and carets encoded."""
+    return mark_safe(force_unicode(html).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;').replace("'", '&#39;'));
+
+def render_article(request):
+	 if request.is_ajax():
+		print('SUCCESS')
+	 else:
+		print('FAILURE')
+		articles = Article.objects.all();
+		content = articles[0].content; 
+		testURL = "http://en.wikipedia.org/wiki/Squirrel";
+		#Create AlchemyAPI Object
+		alchemyapi = AlchemyAPI()
+		print('')
+		print('')	
+
+		response = alchemyapi.text('url',testURL)
+		titleData = alchemyapi.title('url', testURL)
+		authorData = alchemyapi.author('url', testURL)
+		if response['status'] == 'OK':
+			#print('text: ', response['text'].encode('utf-8'))
+			print('')
+		else:
+			print('Error in text extraction call: ', response['statusInfo'])
+
+		return render_to_response('article.html', {'data' : response['text'].encode('utf-8'), 'titleText' : titleData['title'].encode('utf-8')}
+ );
+
+def update_article(request):
+	print('HERE')
+	if request.method == POST:
+		print('SUCCESS')
+	if request.newData:
+		print('SUCCESS')
+	else:
+		print('NO SQUIRRELS')
+	
 
 def logout(request):
 

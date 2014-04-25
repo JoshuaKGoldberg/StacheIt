@@ -20,6 +20,7 @@
  * @return {StacheItPopup}   Returns a new StacheItPopup.
  * @constructor
  */
+
 function StacheItPopup(settings) {
     "use strict";
     if(!this || this === window) {
@@ -132,7 +133,7 @@ function StacheItPopup(settings) {
     var reset = self.reset = function (settings) {
         settings = settings || {};
 
-        url            = settings.url            || "http://zonejm.com";
+        url            = settings.url            || "http://localhost:8000";
         url_login_form = settings.url_login_form || "";
         url_login_info = settings.url_login_info || "/accounts/user_info";
 
@@ -140,3 +141,4 @@ function StacheItPopup(settings) {
     }
     return reset();
 };
+
