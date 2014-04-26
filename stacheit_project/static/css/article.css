@@ -1,0 +1,250 @@
+@font-face
+{
+	font-family: CenturyGothic;
+	src: url('Century_Gothic.TTF');
+}
+
+@font-face
+{
+	font-family: Thirsty;
+	src: url('Thirsty.otf');
+}
+
+html, body{
+  min-height: 100%;
+}
+
+#titleText
+{
+ font-family: CenturyGothic;
+ font-size: 25px;
+ color: #b55d4b;
+ border-bottom: 1px solid #ccc;
+}
+
+#authorText
+{
+ font-family: CenturyGothic;
+ font-size: 30px;
+ color: #b55d4b;
+}
+
+#overlay{
+ 
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.5); 
+  color: white;
+  font-size: 20px;
+  font-family: CenturyGothic;
+}
+
+#overlay input
+{
+ color: black;
+ font-size: 12;
+}
+
+#overlay-content
+{
+ position:absolute;
+ width:100%;
+height: 50%;
+}
+body
+{
+position: relative;
+	background: #fffcd8;	
+}
+
+#stachesHeadline
+{
+	text-align: center;
+}
+
+#logo
+{	
+	width: 200px;	
+	margin-top: 0;	
+}
+
+#header
+{
+ background: #d39685;
+	text-align: center;
+}
+
+#buttonContainer
+{
+ padding: 0 0 20px 0;
+	text-align: center;
+}
+
+.buttonStyle
+{
+font-family:CenturyGothic;
+font-weight:bold;
+font-size:16px;
+text-transform:uppercase;
+padding: 30px 10px 30px 10px;
+        width: auto;
+	color: white;
+	background-color: #B55D4B;
+	border-color: #D4A672;
+	border-radius: 8px;		
+
+}
+
+.buttonStyle:hover
+{
+	border-color: black;
+}
+
+#libraryButton
+{
+	
+}
+
+#logoutButton
+{
+	margin-left: 10px;
+}
+
+#mostRecent
+{
+	width: inherit;	
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#userInfo
+{
+	display: block;
+	width: 50%;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#picture
+{	
+	display: inline-block;	
+}
+
+#profilePic
+{
+	display: inline-block;
+	width: 200px;
+	margin-right: 5px;
+}
+
+#textInfo
+{
+	display: inline-block;		
+	vertical-align: text-bottom;
+}
+
+#mostRecent
+{
+	width: inherit;
+	text-align: justify;
+	margin-right: 20px;
+	margin-left: 20px;		
+}
+
+div#article
+{
+ background: white !important;
+ font-family: CenturyGothic;
+ padding: 10% 10% 10% 10%;
+ border: 1px solid brown;
+ margin: 0 0 10% 0;
+}
+
+div#article p
+{
+ padding: 0 10px 20px 10px;
+}
+
+.inline
+{
+ text-decoration: none !important;
+ color: white !important;
+}
+
+
+/* Modal Dialog */
+.ui-dialog, .ui-dialog-title 
+{
+ font-family: CenturyGothic;
+ text-transform: uppercase;
+ font-size: 20px;
+ color: white;
+}
+
+.ui-widget-content
+{
+ background: #fffcd8 !important;
+}
+
+.ui-widget-header
+{
+ border:1px solid #E4D2D2;
+ background: #d39685 !important;
+}
+
+.ui-widget input, .ui-widget textarea
+{
+ width: 100%;
+ border:1px solid #E4D2D2;
+ background: white !important;
+}
+
+.ui-widget-overlay
+{
+ /*background: brown !important;*/
+ opacity: .5 !important;
+}
+
+.ui-button-text-only, .ui-button-text
+{
+ font-family: CenturyGothic;
+ text-transform: uppercase;
+ font-weight: bold;
+}
+
+.ui-button
+{
+ border: 1px solid #DFBBBB;
+ background: #d39685 !important;
+ font-weight: normal;
+ color: #FFFFFF !important;
+}
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {	
+	#logoContainer
+	{
+		text-align: left;
+	}
+
+	#mostRecent
+	{
+		width: 600px;
+		margin-left: auto;
+		margin-right: auto;		
+	}
+
+	#logoutButton:hover
+	{
+		border-color: black;
+	}
+
+	.buttonStyle
+	{		
+		margin-top: 25%; 
+	}
+}
