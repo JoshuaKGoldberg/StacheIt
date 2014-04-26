@@ -31,5 +31,23 @@ To get started and run the example, simply:
 
 Just replace YOUR_API_KEY with your 40 character API key from AlchemyAPI, and you should be good to go.
 
+
+## TastyPie API ##
+
+Example curl post request to an article resource:
+
+ curl --dump-header - -H "Content-Type: application/json" -X POST --data '{"content": "teasdst","title":"This is a title","user":"/api/user/1/","test":"testfield"}' http://localhost:8000/api/article/
+
+Response:
+
+HTTP/1.0 201 CREATED
+Date: Sat, 26 Apr 2014 21:05:49 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Accept
+X-Frame-Options: SAMEORIGIN
+Content-Type: text/html; charset=utf-8
+Location: http://localhost:8000/api/article/3/
+
+
 	
 	
