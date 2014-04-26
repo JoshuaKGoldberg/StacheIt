@@ -42,26 +42,20 @@
 			</div>
 			<div id="textInfo">
 				<p> {% if username %}
-						{{ username }}
-					{% else %}
-						KanyeKanye
+						{{ username }}					
 					{% endif %} </p>
-				<p> Email Address </p>
-				<p> Join Date: 1/1/2014! <p>
+				<p> {{ email }} </p>
+				<p> Join Date: {{ date_created }} <p>
 			</div>
 		</div>	
 		<div id="mostRecent" class="row">				
 			<h3 id="stachesHeadline"> Most Recent Staches </h3>
 			<div class="list-group">
-			  <a href="http://www.technobuffalo.com/2014/03/19/google-chromecast-now-available-in-11-international-markets/" class="list-group-item">
-			    <h4 class="list-group-item-heading">Google Chromecast Now Available in 11 International Markets</h4>			    
-			  </a>
-			  <a href="http://www.technobuffalo.com/2014/03/19/pandora-to-raise-subscription-prices-in-may/" class="list-group-item">
-			    <h4 class="list-group-item-heading">Pandora to Raise Subscription Prices in May</h4>			    
-			  </a>
-			  <a href="http://www.technobuffalo.com/2014/03/19/amazon-prime-price-hike-turning-customers-off/" class="list-group-item">
-			    <h4 class="list-group-item-heading">Amazon Prime Price Hike Turning Customers Off</h4>			    
-			  </a>		  
+				{% for article in article_list %}
+					<a class="list-group-item">
+						<h4 class="list-group-item-heading"> {{ article.title }} </h4>				
+					</a>    					
+				{% endfor %}
 			</div>
 		</div>
 	</div>

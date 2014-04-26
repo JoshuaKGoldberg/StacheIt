@@ -17,11 +17,15 @@ function StacheItCommunicator(settings) {
         dialog,
         dialog_prog,
         
-        // API URL to POST page information
-        api;
+        // API URLs to... 
+        api_prefix, // start the other APIs
+        api_user,   // GET user info
+        api_post;   // POST page information
     
     self.reset = function(settings) {
-        api = settings.api || "http://zonejm.com/api/article/?format=json";
+        api_prefix = settings.api_prefix || "http://zonejm.com";
+        api_user   = settings.api_user   || "/accounts/user_info";
+        api_post   = settings.api_post   || "/api/article/?format=json";
     };
     
     /**
@@ -56,27 +60,54 @@ function StacheItCommunicator(settings) {
     }
     
     /**
+     * Sends the given page out to the API URL as an AJAX POST request
      * 
+     * @param {Object} information   The collection JSON-able object to be sent
+     *                               as POST data, including fields such as
+     *                               "content" and "title"
      */
     self.sendPage = function (information) {
         var ajax = new XMLHttpRequest(),
-            key, input;
+            user_info;
         
-        // Start the AJAX request as a POST to the api
-        ajax.open("POST", api, true);
+        // Get the user account information from the API
+        dialog_prog.innerText = "...processing user...";
+        ajax.open("GET", api_prefix + api_user);
+        ajax.send();
         
-        // Send the POST information as JSON
-        // http://zonejm.com/api/article/schema/?format=json
-        ajax.setRequestHeader("Content-type", "application/json");
-        ajax.send(JSON.stringify(information));
-        
-        ajax.onreadystatechange = function(status) {
-            if(ajax.readyState != 4 || ajax.status != 400) {
+        ajax.onreadystatechange = function() {
+            if(ajax.readyState !== 4) {
                 return;
             }
-            console.log("Got", status, ajax);
-            dialog_prog.innerText = ajax.status + ': ' + ajax.statusText;
-        }
+            dialog_prog.innerText = "...staching page...";
+            
+            // Copy the user info to the API
+            user_info = JSON.parse(ajax.responseText);
+            information.user_id = user_info.id;
+            information.owner = {
+                "user_id": user_info.id,
+                "resource_uri": "/api/stacher/" + user_info.id + "/"
+            };
+            
+            // Start the AJAX request as a POST to the api
+            ajax.open("POST", api_prefix + api_post, true);
+            
+            // Send the POST information as JSON
+            // http://zonejm.com/api/article/schema/?format=json
+            ajax.setRequestHeader("Content-type", "application/json");
+            ajax.send(JSON.stringify(information));
+            
+            ajax.onreadystatechange = function(status) {
+                if(ajax.readyState != 4) {
+                    return;
+                }
+                
+                console.log("Got", status, ajax);
+                dialog_prog.innerText = ajax.status + ': ' + ajax.statusText;
+            }
+        };
+        
+
 
         return self;
     }

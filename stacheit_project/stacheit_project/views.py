@@ -28,10 +28,15 @@ def auth_view(request):
 	else:
 		return HttpResponseRedirect('/accounts/invalid')
 
-def loggedin(request):
-	if request.user:
+def loggedin(request):	
+	if request.user:		
+		articles = Article.objects.filter(owner = request.user)		
+
+		for x in range(len(articles)):
+			articles[x].content = articles[x].content[0:200]
+	
 		if request.user.is_active:
-			return render_to_response('loggedin.html', {'full_name' : request.user.username})
+			return render_to_response('loggedin.html', {'full_name' : request.user.username, 'article_list' : articles})
 		else:
 			return HttpResponseRedirect('')
 
@@ -39,7 +44,14 @@ def invalid_login(request):
 	return render_to_response('invalid_login.html')
 
 def profile(request):
-	return render_to_response('profile.html');
+	if request.user:
+		articles = Article.objects.filter(owner = request.user)
+		stacher = Stacher.objects.filter(user = request.user)
+		stacher = stacher[0]
+
+		if request.user.is_active:
+			return render_to_response('profile.html', { 'username' : request.user.username, 'email':stacher.email, 'date_created':stacher.date_created,
+														'article_list' : articles })
 
 ###############################
 # ARTICLE RENDERING
