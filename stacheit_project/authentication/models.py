@@ -20,19 +20,22 @@ class Stacher(models.Model):
 	def __str__(self):
 		return self.display_name
 
-class Annotation(models.Model):
-	content = models.TextField()
-	class_name = models.CharField(max_length=75)	
-	owner = ForeignKey(Stacher)
+# class Annotation(models.Model):
+# 	content = models.TextField()
+# 	class_name = models.CharField(max_length=75)	
+# 	owner = ForeignKey(User)
+
+
 
 	def __str__(self):
 		return self.class_name
 
 class Article(models.Model):
-	owner = ForeignKey(Stacher)
+	owner = ForeignKey(User)
+	test = models.CharField(max_length=130)
 	title = models.CharField(max_length=120)
 	content = models.TextField()
-	annotations = models.ManyToManyField(Annotation, through="ArticleAnnotations")
+	# annotations = models.ManyToManyField(Annotation, through="ArticleAnnotations")
 
 	def __str__(self):
 		return self.title
@@ -42,6 +45,6 @@ class StacherArticles(models.Model):
 	article = models.ForeignKey(Article)
 	date_created = models.DateTimeField(auto_now_add=True)	
 
-class ArticleAnnotations(models.Model):
-	article = ForeignKey(Article)
-	annotation = ForeignKey(Annotation)
+# class ArticleAnnotations(models.Model):
+# 	article = ForeignKey(Article)
+# 	annotation = ForeignKey(Annotation)

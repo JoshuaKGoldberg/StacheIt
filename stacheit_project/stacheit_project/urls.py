@@ -2,12 +2,15 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
 import authentication.views
-from stacheit_project.api import ArticleResource, AnnotationResource, StacherResource
+from stacheit_project.api import ArticleResource, StacherResource, UserResource
+# from stacheit_project.api import AnnotationResource
+
 admin.autodiscover()
 
 article_resource = ArticleResource()
-annotation_resource = AnnotationResource()
+# annotation_resource = AnnotationResource()
 stacher = StacherResource()
+user = UserResource()
 
 urlpatterns = patterns('',
     # Examples:
@@ -27,8 +30,9 @@ urlpatterns = patterns('',
     url(r'^accounts/user_info/$', 'stacheit_project.views.user_info'),
     url(r'^article/$', 'stacheit_project.views.render_article'),
     url(r'^api/', include(article_resource.urls)),
-    url(r'^api/', include(annotation_resource.urls)),
-    url(r'^api/', include(stacher.urls))
+    # url(r'^api/', include(annotation_resource.urls)),
+    url(r'^api/', include(stacher.urls)),
+    url(r'^api/', include(user.urls))
 )
 
 

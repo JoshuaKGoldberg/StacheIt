@@ -6,7 +6,8 @@ from django.core.context_processors import csrf
 from django.contrib.auth.forms import UserCreationForm
 from .forms import StacheUserCreationForm
 from django.views.decorators.csrf import ensure_csrf_cookie
-from authentication.models import Article, Stacher, Annotation
+from authentication.models import Article, Stacher
+# from authentication.models import Annotation
 from django.utils.safestring import mark_safe
 from django.utils.encoding import force_unicode
 from alchemyapi import AlchemyAPI
