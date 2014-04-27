@@ -110,7 +110,7 @@ annotate=function()
      var information = {"content": newContent, "title": newTitle};
      console.log(newContent);
      // Start the AJAX request as a PATCH to the api
-     ajax.open("PATCH", "http://localhost:8000/api/article/" + id + "/?format=json", true);
+     ajax.open("PATCH", "http://zonejm.com/api/article/" + id + "/?format=json", true);
             
      // Send PATCH as json
      // Ex: http://localhost:8000/api/article/21/?format=json
