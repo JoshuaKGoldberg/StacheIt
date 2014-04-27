@@ -146,3 +146,19 @@ input[name=password]
  margin: -7px 20px 0 10px;
 
 }
+
+#logout {
+ font-size: 13px;
+ font-weight: bold;
+ padding: 0 0 0 4px;
+ color: rgb(181, 93, 75);
+ text-decoration: none;    
+}
+
+#invalid {
+ font-size: 13px;
+ font-weight: bold;
+ padding: 0 0 0 4px;
+ color: rgb(181, 93, 75);
+ text-decoration: none;    
+}
