@@ -115,3 +115,6 @@ def user_info(request):
       return render_to_response('user_info.html', {'username' : request.user.username, 'id' : request.user.id })
     
   return render_to_response('user_info.html')
+
+def home(request):
+	return render_to_response('home.html')
