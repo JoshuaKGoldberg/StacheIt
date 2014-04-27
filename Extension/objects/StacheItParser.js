@@ -46,7 +46,7 @@ function StacheItParser(settings) {
      */
     self.getAll = function() {
         return {
-            "resource_uri": self.getURL(),
+            "url": self.getURL(),
             "title": self.getTitle(),
             "content": self.getHTML(),
             // "style": self.getStyle()
