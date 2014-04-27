@@ -191,11 +191,6 @@ div#article p
 		margin-right: auto;		
 	}
 
-	#logoutButton:hover
-	{
-		border-color: black;
-	}
-
 	.buttonStyle
 	{		
 		margin-top: 25%; 
