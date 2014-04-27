@@ -36,17 +36,17 @@ Just replace YOUR_API_KEY with your 40 character API key from AlchemyAPI, and yo
 
 Example curl post request to an article resource:
 
- curl --dump-header - -H "Content-Type: application/json" -X POST --data '{"content": "teasdst","title":"This is a title","user":"/api/user/1/","test":"testfield"}' http://localhost:8000/api/article/
+(stacheit_project)witkoj2@ubuntu:~/StacheIt/stacheit_project$ curl --dump-header - -H "Content-Type: application/json" -X POST --data '{"content":"","title":"This is a title","user":"/api/user/1/","url":"http://lifehacker.com/5513559/give-your-computer-and-peripherals-a-spring-cleaning"}' http://localhost:8000/api/article/
 
-Response:
 
 HTTP/1.0 201 CREATED
-Date: Sat, 26 Apr 2014 21:05:49 GMT
+Date: Sun, 27 Apr 2014 00:44:37 GMT
 Server: WSGIServer/0.1 Python/2.7.3
 Vary: Accept
 X-Frame-Options: SAMEORIGIN
 Content-Type: text/html; charset=utf-8
-Location: http://localhost:8000/api/article/3/
+Location: http://localhost:8000/api/article/1/
+
 
 
 	
