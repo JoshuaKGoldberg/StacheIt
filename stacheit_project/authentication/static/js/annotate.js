@@ -100,7 +100,7 @@ annotate=function()
     var ajax = new XMLHttpRequest();
         
     //Trigger call
-    ajax.open("GET", "http://localhost:8000");
+    ajax.open("GET", "http://zonejm.com");
     ajax.send();
 
     //Patch changed data
