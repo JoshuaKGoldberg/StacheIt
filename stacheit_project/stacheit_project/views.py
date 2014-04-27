@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import auth
 from django.core.context_processors import csrf
+from django.template import RequestContext
 from django.contrib.auth.forms import UserCreationForm
 from .forms import StacheUserCreationForm
 from django.views.decorators.csrf import ensure_csrf_cookie
