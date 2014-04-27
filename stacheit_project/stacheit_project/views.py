@@ -1,5 +1,5 @@
 from __future__ import print_function
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import auth
 from django.core.context_processors import csrf
@@ -43,7 +43,7 @@ def loggedin(request):
 			return HttpResponseRedirect('')
 
 def invalid_login(request):
-	return render_to_response('invalid_login.html')
+	return render_to_response('login.html', {"invalid": "Invalid login. Please try again."})
 
 def profile(request):
 	if request.user:
@@ -74,7 +74,7 @@ def render_article(request):
 		article.save()
 
 		return render_to_response('article.html', {'id' : article.id, 'data' : response['text'].encode('utf-8'), 'titleText' : titleData['title'].encode('utf-8')}
- );
+ )
 
 def update_article(request):
 	print('HERE')
@@ -91,7 +91,7 @@ def logout(request):
 	auth.logout(request)
 	c = {}
 	c.update(csrf(request))
-	return render_to_response('logout.html', c)
+	return render_to_response('login.html', {"loggedout": "Successfully logged out."})
 
 def register_user(request):
 	form = StacheUserCreationForm()

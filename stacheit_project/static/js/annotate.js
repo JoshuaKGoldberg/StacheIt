@@ -1,8 +1,11 @@
 var selection = '';
 
-//Hide add-annotation overlay on load
 $(function() 
 {
+//Activate colorbox for all previous annotations
+$(".inline").colorbox({inline:true, width:"50%"});
+
+//Hide add-annotation overlay on load
 $( "#dialog-form" ).dialog({
       autoOpen: false,
       height: 300,
@@ -76,7 +79,7 @@ annotate=function()
     //Set anchor class to inline (From Colorbox lightbox plugin)
     hiddenDiv.style.display="none";
     hiddenDiv.appendChild(p);
-    document.body.appendChild(hiddenDiv);
+    document.getElementById('data').appendChild(hiddenDiv);
     anchor.href = "#" + annotationID;
     anchor.className = "inline";
     
@@ -91,7 +94,37 @@ annotate=function()
     document.getElementById('note').value = '';
 
     //Update database
-    
+    var newTitle = $("#titleText")[0].innerHTML;
+    var newContent = $("#data")[0].innerHTML;
+    var id = $("#articleID")[0].innerHTML;
+    var ajax = new XMLHttpRequest();
+        
+    //Trigger call
+    ajax.open("GET", "http://localhost:8000");
+    ajax.send();
+
+    //Patch changed data
+    ajax.onreadystatechange = function() 
+    {
+     if(ajax.readyState !== 4) { return; }
+     var information = {"content": newContent, "title": newTitle};
+     console.log(newContent);
+     // Start the AJAX request as a PATCH to the api
+     ajax.open("PATCH", "http://localhost:8000/api/article/" + id + "/?format=json", true);
+            
+     // Send PATCH as json
+     // Ex: http://localhost:8000/api/article/21/?format=json
+     ajax.setRequestHeader("Content-type", "application/json");
+     ajax.send(JSON.stringify(information));
+            
+     ajax.onreadystatechange = function(status) 
+     {
+      console.log("ATTEMPTING TO PATCH");
+      if(ajax.readyState != 4) { return; }    
+        console.log("Got", status, ajax);
+      }//END AJAX
+     }
+
    }
 
 
