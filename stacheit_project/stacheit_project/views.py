@@ -68,22 +68,32 @@ def render_article(request):
 		print('FAILURE')
 		#articles = Article.objects.all();
 		#content = articles[0].content; 
-		testURL = "http://en.wikipedia.org/wiki/Squirrel";
-		#Create AlchemyAPI Object
-		alchemyapi = AlchemyAPI()
 		print('')
 		print('')	
+		#if current aricle has content field
+		#render as is
+		#else call alchemy and save content
+		article = Article.objects.get(id= 1)
+		if article.content:
+			return render_to_response('article.html', {'data' : article.content, 'titleText' : article.title})
+		else:				
+			testURL = article.url
+			#Create AlchemyAPI Object
+			alchemyapi = AlchemyAPI()
+			response = alchemyapi.text('url', testURL)
+			titleData = alchemyapi.title('url', testURL)
+			authorData = alchemyapi.author('url', testURL)
+			article.content = response['text'].encode('utf-8')
+			article.title = titleData['title'].encode('utf-8')
+			article.save()
 
-		response = alchemyapi.text('url',testURL)
-		titleData = alchemyapi.title('url', testURL)
-		authorData = alchemyapi.author('url', testURL)
-		if response['status'] == 'OK':
-			#print('text: ', response['text'].encode('utf-8'))
-			print('')
-		else:
-			print('Error in text extraction call: ', response['statusInfo'])
+			if response['status'] == 'OK':
+				#print('text: ', response['text'].encode('utf-8'))
+				print('')
+			else:
+				print('Error in text extraction call: ', response['statusInfo'])
 
-		return render_to_response('article.html', {'data' : response['text'].encode('utf-8'), 'titleText' : titleData['title'].encode('utf-8')}
+			return render_to_response('article.html', {'data' : response['text'].encode('utf-8'), 'titleText' : titleData['title'].encode('utf-8')}
  );
 
 def update_article(request):
