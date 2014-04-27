@@ -32,7 +32,7 @@ h2 {
             box-shadow: 0 8px 6px -6px #94643D;
 }
 img#logo {
-    width: 200px;
+    width: 250px;
     margin: 0 auto;
 
 }
@@ -80,27 +80,27 @@ img#logo {
  float: right;
 }
 
-@media only screen and (min-width: 1200px) and ( min-height: 770px) {
-    #footer {
+@media only screen and (min-width: 1200px) and ( min-height: 690px) {
+   /* #footer {
         width: 1170px;
         height: 294px;
-        background-image:url('bottom.png'); 
+        background-image:url('http://localhost:8000/static/images/bottom.png'); 
     }
 
     #book-overlay{
         height: 294px;
-    }
+    }*/
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) and (min-height:680px ) {
+@media only screen and (min-width: 992px) and (max-width: 1199px) and (min-height:680px ) {/*
     #footer {
         width: 970px;
         height: 180px;
-        background: url(bottom2.png); 
-    }
+        background: url(bottom2.png);background-image:url('http://localhost:8000/static/images/bottom2.png'); 
 
     #book-overlay{
         height: 180px;
-    }
+    }*/
 }
+
 
