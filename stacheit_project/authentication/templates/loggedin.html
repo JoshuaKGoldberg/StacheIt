@@ -26,19 +26,19 @@
 <body>
 
 <div id="wrapper">
- <div class="container">
-  <div id="header" class="row">
-   <div id="logoContainer" class="col-sm-12 col-md-8">
-    <img id="logo" src = "{% static 'images\stache-it.png' %}" alt="Logo"/>
-   </div>
-   <div class="col-sm-12 col-md-4">   
-   <div id="buttonContainer"><a id="libraryLink" href="/accounts/loggedin"><input class="buttonStyle" id="libraryButton" type="submit" value="My Staches"/></a>
-
-<a id="logoutLink" href="/accounts/logout/"><input class="buttonStyle" id="logoutButton" type="submit" value="Logout"/></a>		
-  </div>
- </div>
-</div>
-<hr/>
+ 	<div class="container">
+	  	<div id="header" class="row">
+		   	<div id="logoContainer" class="col-sm-12 col-md-8">
+		    	<img id="logo" src = "{% static 'images\stache-it.png' %}" alt="Logo"/>
+		   	</div>
+		   	<div class="col-sm-12 col-md-4">   
+		   			<div id="buttonContainer">
+		   				<a id="libraryLink" href="/accounts/loggedin"><input class="buttonStyle" id="libraryButton" type="submit" value="My Staches"/></a>
+						<a id="logoutLink" href="/accounts/logout/"><input class="buttonStyle" id="logoutButton" type="submit" value="Logout"/></a>		
+		  			</div>
+		 	</div>
+		</div>
+		<hr/>
 		<div id="libraryContainer" class="row">
 			<div id="library">
 			{% if article_list %}
@@ -58,13 +58,12 @@
 			</div>
 		</div>
 
-<p id = "footer">Web Science Team 2 : Altan, Irene, Josh, Josh, Justin, Nurgul</p>
+		<p id = "footer">Web Science Team 2 : Altan, Irene, Josh, Josh, Justin, Nurgul</p>
 
 		<form id="hiddenForm" method="post" action="/article/">{% csrf_token %}
-			<input id="hiddenInput" style="display:none" type="submit" name="articleData" value="jaksjdlkasjlkd"></input>
+			<input id="hiddenInput" style="display:none" type="text" name="articleData" value=""></input>
 		</form>
 	</div>
-
 </div>
 
 

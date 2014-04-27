@@ -1,0 +1,106 @@
+@font-face
+{
+ font-family: CenturyGothic;
+ src: url('Century_Gothic.TTF');
+}
+
+@font-face
+{
+ font-family: Thirsty;
+ src: url('Thirsty.otf');
+}
+
+body {
+  background: #d39685;
+}
+
+h2 {
+    font-family: Thirsty;
+    font-size: 4em;
+    color: #f5ddbb;
+}
+
+.lead {
+    color: #B55D48;
+    font-family: CenturyGothic;
+}
+
+.masthead {
+    background-color:rgba(242,206,177,.3); 
+    -webkit-box-shadow: 0 8px 6px -6px #94643D;
+       -moz-box-shadow: 0 8px 6px -6px #94643D;
+            box-shadow: 0 8px 6px -6px #94643D;
+}
+img#logo {
+    width: 200px;
+    margin: 0 auto;
+
+}
+.nav-pills li a{
+    color: #B55D48
+}
+.nav-pills li a:hover{
+    background: rgba(242,206,177,0);
+    color: #f5ddbb ;
+}
+
+.jumbotron{
+    margin: auto;
+    text-align: center;
+    background: #d39685;
+}
+.btn-brown{
+}
+.jumbotron a.btn-brown:hover {
+    opacity: .8;
+    color: white;
+}
+#footer {
+  position: absolute;
+  margin: auto;
+  left: 0%;
+  right: 0%;
+  bottom: 0%;
+  
+
+}
+
+#book-overlay {
+
+  
+  position: absolute;
+  bottom:0%;
+  left: 0%;
+  right:0%;
+  background-color: rgba(211,150,133,.7);
+}
+
+#signin
+{
+ float: right;
+}
+
+@media only screen and (min-width: 1200px) and ( min-height: 770px) {
+    #footer {
+        width: 1170px;
+        height: 294px;
+        background-image:url('bottom.png'); 
+    }
+
+    #book-overlay{
+        height: 294px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) and (min-height:680px ) {
+    #footer {
+        width: 970px;
+        height: 180px;
+        background: url(bottom2.png); 
+    }
+
+    #book-overlay{
+        height: 180px;
+    }
+}
+
