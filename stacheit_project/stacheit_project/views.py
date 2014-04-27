@@ -54,17 +54,13 @@ def profile(request):
 			return render_to_response('profile.html', { 'username' : request.user.username, 'email':stacher.email, 'date_created':stacher.date_created,
 														'article_list' : articles })
 
-def render_article(request):
-	#articles = Article.objects.all();
-	#content = articles[0].content; 
-	print('')
-	print('')	
+def render_article(request):	
 	#if current aricle has content field
 	#render as is
 	#else call alchemy and save content
-	article = Article.objects.get(id= 1)
+	article = Article.objects.get(id= 2)
 	if article.content:
-		return render_to_response('article.html', {'data' : article.content, 'titleText' : article.title})
+		return render_to_response('article.html', {'id' : article.id, 'data' : article.content, 'titleText' : article.title})
 	else:				
 		testURL = article.url
 		#Create AlchemyAPI Object
@@ -76,13 +72,7 @@ def render_article(request):
 		article.title = titleData['title'].encode('utf-8')
 		article.save()
 
-		if response['status'] == 'OK':
-			#print('text: ', response['text'].encode('utf-8'))
-			print('')
-		else:
-			print('Error in text extraction call: ', response['statusInfo'])
-
-		return render_to_response('article.html', {'data' : response['text'].encode('utf-8'), 'titleText' : titleData['title'].encode('utf-8')}
+		return render_to_response('article.html', {'id' : article.id, 'data' : response['text'].encode('utf-8'), 'titleText' : titleData['title'].encode('utf-8')}
  );
 
 def update_article(request):

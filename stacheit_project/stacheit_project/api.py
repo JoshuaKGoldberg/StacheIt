@@ -26,7 +26,7 @@ class ArticleResource(ModelResource):
     class Meta:
         queryset = Article.objects.all()
         resource_name = 'article'
-        allowed_methods = ['get', 'post', 'put', 'delete']
+        allowed_methods = ['get', 'post', 'patch', 'put', 'delete']
         authorization = Authorization()
 
 class StacherResource(ModelResource):
