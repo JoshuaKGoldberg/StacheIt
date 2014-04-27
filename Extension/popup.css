@@ -1,10 +1,21 @@
+@font-face
+{
+	font-family: CenturyGothic;
+	src: url('media/Century_Gothic.TTF');
+}
+
+@font-face
+{
+	font-family: Thirsty;
+	src: url('media/Thirsty.otf');
+}
+
 html {
-  background: #fffcd7;
+  background: #d39685;
   width: 350px;
   height: 100%;
   min-width: 100%;
   min-height: 100%;
-  font-family: "Century Gothic";
 }
 
 body {
@@ -18,8 +29,30 @@ iframe {
 }
 
 h1 small {
-  font-size: 63%;
+  font-size: 20px;
   font-weight: initial;
+  font-family: CenturyGothic;
+  color: #fffcd8;
+}
+
+#hi
+{
+  padding: 0 0 0 35px;
+  line-height: 70%;
+}
+
+#logo
+{
+ display: block;
+ margin: 0 0 0 44px;
+}
+
+#name
+{
+ font-family: Thirsty;
+ font-size: 30px;
+ color: #fffcd8;
+ font-weight: normal;
 }
 
 #temp_holder {
@@ -33,13 +66,22 @@ h1 small {
 
 /* This will need better styling soon */
 #stacher {
+  font-family: Thirsty;
   margin: 35px auto 0;
   padding: 28px 35px;
   width: 210px;
-  background: green;
+  background: #fffcd8;
   text-align: center;
   font-size: 2.1em;
-  font-weight: bold;
-  color: white;
+  color: #b55d4b;
   cursor: pointer;
+  border-radius: 7px;
+
+}
+
+#stacher:hover
+{
+ color:#fffcd8;
+ background: #b55d4b;
+
 }

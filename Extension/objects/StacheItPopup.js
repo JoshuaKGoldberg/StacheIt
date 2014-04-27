@@ -94,12 +94,12 @@ function StacheItPopup(settings) {
 
         // Start the page off with the username
         head_username = document.createElement("h1");
-        head_username.innerHTML = "<small>Hey again, </small>" + user_info.username;
+        head_username.innerHTML = "<img id = \"logo\" src= \"media/stache-it.png\" /></div><div id = \"hi\">" + "<small>Hey there, </small>" + "<span id = \"name\">" + user_info.username + "</span>" + "<small> . Click below to stache this page and shave it for later.</small></div>";
 
         // Add the stacher button below that
         butt_stacher = document.createElement("div");
         butt_stacher.id = "stacher";
-        butt_stacher.innerText = "Stache It!";
+        butt_stacher.innerText = "Stache it";
         butt_stacher.onclick = self.stachePage;
 
         // Add both of them (it's ok that this is a little slow)

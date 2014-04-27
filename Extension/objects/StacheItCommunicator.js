@@ -23,7 +23,7 @@ function StacheItCommunicator(settings) {
         api_post;   // POST page information
     
     self.reset = function(settings) {
-        api_prefix = settings.api_prefix || "http://zonejm.com";
+        api_prefix = settings.api_prefix || "http:localhost:8000";
         api_user   = settings.api_user   || "/accounts/user_info";
         api_post   = settings.api_post   || "/api/article/?format=json";
     };
@@ -72,7 +72,7 @@ function StacheItCommunicator(settings) {
         
         // Get the user account information from the API
         dialog_prog.innerText = "...processing user...";
-        ajax.open("GET", api_prefix + api_user);
+        ajax.open("GET", "http://localhost:8000" + api_post);
         ajax.send();
         
         ajax.onreadystatechange = function() {
@@ -81,16 +81,10 @@ function StacheItCommunicator(settings) {
             }
             dialog_prog.innerText = "...staching page...";
             
-            // Copy the user info to the API
-            user_info = JSON.parse(ajax.responseText);
-            information.user_id = user_info.id;
-            information.owner = {
-                "user_id": user_info.id,
-                "resource_uri": "/api/stacher/" + user_info.id + "/"
-            };
-            
+
+	    information = {"content": "TEST FROM EXTENSION", "test": "testfield", "title": "This is a title", "user": "/api/user/1/"};
             // Start the AJAX request as a POST to the api
-            ajax.open("POST", api_prefix + api_post, true);
+            ajax.open("POST", "http://localhost:8000" + api_post, true);
             
             // Send the POST information as JSON
             // http://zonejm.com/api/article/schema/?format=json

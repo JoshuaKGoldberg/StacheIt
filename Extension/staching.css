@@ -1,6 +1,17 @@
 /**
  * Everything here is !important so native styles don't override them
  */
+@font-face
+{
+	font-family: CenturyGothic;
+	src: url('Century_Gothic.TTF');
+}
+
+@font-face
+{
+	font-family: Thirsty;
+	src: url('Thirsty.otf');
+}
 
 #stacheit_dialog_out {
     position: fixed !important;
@@ -10,7 +21,7 @@
     left: 0 !important;
     background: rgba(56,49,42,.84) !important;
     z-index: 140 !important;
-    font-family: Century Gothic !important;
+    font-family: CenturyGothic !important;
 }
 
 #stacheit_dialog_mid {
