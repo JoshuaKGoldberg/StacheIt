@@ -83,6 +83,12 @@ body
  margin: 0;
 }
 
+.list-group
+{
+ max-width: 600px !important;
+ margin: 0 auto 40px auto !important;
+}
+
 .list-group-item
 {
  background: #fffcd8;
@@ -102,4 +108,20 @@ body
  font-family: CenturyGothic;
  font-size: 14px;
  padding : 0 0 0 0 !important;
+}
+
+#footer
+{
+ background: none;
+ height: 100px;
+ width: 100%;
+ border-top: 1px solid white;
+}
+
+p#footer
+{
+ font-family: CenturyGothic;
+ font-size: 14px;
+ color: white;
+ padding: 20px 0 0 0;
 }
