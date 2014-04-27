@@ -32,9 +32,9 @@ class Stacher(models.Model):
 
 class Article(models.Model):
 	owner = ForeignKey(User)
-	test = models.CharField(max_length=130)
+	url = models.CharField(max_length=200)
 	title = models.CharField(max_length=120)
-	content = models.TextField()
+	content = models.TextField(null=True, blank=True)
 	# annotations = models.ManyToManyField(Annotation, through="ArticleAnnotations")
 
 	def __str__(self):
