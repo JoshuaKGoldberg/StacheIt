@@ -43,7 +43,7 @@ function StacheItCommunicator(settings) {
         
         dialog = document.createElement("h1");
         dialog.id = "stacheit_dialog";
-        dialog.innerText = "Staching!";
+        dialog.innerText = "Staching";
         
         dialog_prog = document.createElement("aside");
         dialog_prog.id = "stacheit_dialog_prog";

@@ -1,16 +1,11 @@
 /**
  * Everything here is !important so native styles don't override them
  */
-@font-face
-{
-	font-family: CenturyGothic;
-	src: url('Century_Gothic.TTF');
-}
 
 @font-face
 {
 	font-family: Thirsty;
-	src: url('Thirsty.otf');
+	src: url('http://zonejm.com/static/css/Thirsty.otf');
 }
 
 #stacheit_dialog_out {
@@ -19,9 +14,9 @@
     right: 0 !important;
     bottom: 0 !important;
     left: 0 !important;
-    background: rgba(56,49,42,.84) !important;
-    z-index: 140 !important;
-    font-family: CenturyGothic !important;
+    background: rgba(63,35,28,.84) !important;
+    z-index: 1170 !important;
+    font-family: Century Gothic !important;
 }
 
 #stacheit_dialog_mid {
@@ -42,9 +37,12 @@
     margin: 0 !important;
     padding: 14px !important;
     background: rgba(255,252,215,.91) !important;
+    font-size: 49px !important;
+    font-family: Thirsty !important;
 }
 
 #stacheit_dialog_prog {
     padding: 7px !important;
-    background: rgba(255,252,215,.84) !important;
+    background: rgba(255,252,215,.77) !important;
+    font-size: 21px !important;
 }
