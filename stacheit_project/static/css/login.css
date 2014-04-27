@@ -1,4 +1,4 @@
-@font-face
+@font-face 
 {
 font-family: CenturyGothic;
 src: url('Century_Gothic.TTF');
@@ -87,6 +87,7 @@ input[type=submit]
     font-weight: bold;
     width: 100%;
     text-transform:uppercase;
+    cursor: pointer;
 }
 
 input[type=submit]:hover
