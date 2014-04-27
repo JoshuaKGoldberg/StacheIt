@@ -13,12 +13,10 @@
   {% endif %}
 
   <form id="login_form" action='/accounts/auth/' method='post'>{% csrf_token %}
-    <img id = "envelope" src = "{% static 'images\envelope.png' %}" />
       <label for="username"></label>
-      <input type="text" name="username" placeholder="username" value="" id="username">
-    <img id = "key" src = "{% static 'images\key.png' %}" />
+      <input type="text" name="username" placeholder="Username" value="" id="username">
       <label for="password"></label>
-      <input type ="password" name="password" placeholder="password" value="" id="password">
+      <input type ="password" name="password" placeholder="Password" value="" id="password">
       <input type="submit" value="login" />
     <div id = "fb-login" >
       <a href="{% url 'social:begin' 'facebook' %}">
