@@ -59,16 +59,9 @@
 </div>
 <hr/>
 {% autoescape off %}	
-<div id = "article"><p id = "articleID" style="display:none;">{{id}}</p><p id="titleText">{{titleText}}</p><p id = "data">{{ data }}</p></div>
+<div id = "article"><p id = "articleID" style="display:none;">{{id}}</p><p id="titleText">{{titleText}}</p><div id = "data">{{ data }}</div></div>
 {% endautoescape %}
-<script>
-$(function() 
-{
 
-document.getElementById('article').innerHTML.replace(/\r?\n/g,'<br><br/>');
-    });
-
-</script>
 
 <p id = "footer">Web Science Team 2 : Altan, Irene, Josh, Josh, Justin, Nurgul</p>
 </body>
