@@ -83,17 +83,13 @@ function StacheItCommunicator(settings) {
             dialog_prog.innerText = "...staching page...";
             
             // Add the obtained user info to the request information
-            var info_extra = JSON.parse(ajax.responseText),
-                owner_fields = ["user", "id", "user_id", "owner"],
-                i;
-            information.username = info_extra.username;
-            
-            for(i = owner_fields.length - 1; i >= 0; --i) {
-                information[owner_fields[i]] = "/api/user/" + info_extra.id;
-            }
+            var info_extra = JSON.parse(ajax.responseText);
+            information.user = "/api/user/" + info_extra.id + "/";
+            console.log("Sending info", information);
             
             // Start the AJAX request as a POST to the api
             ajax.open("POST", api_prefix + api_post, true);
+            console.log("Opening", api_prefix + api_post);
             
             // Send the POST information as JSON
             // http://zonejm.com/api/article/schema/?format=json

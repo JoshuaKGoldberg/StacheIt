@@ -1,4 +1,3 @@
-{% csrf_token %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,6 +21,7 @@
     <![endif]-->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../../static/js/loggedin.js"></script>
 </head>
 <body>
 
@@ -43,13 +43,13 @@
 			<div id="library">
 			{% if article_list %}
 				<h1 id="stachesHeadline"> My Staches </h1>				
-				<div class="list-group">
-					{% for article in article_list %}
-    					<a class="list-group-item">
+				<div class="list-group">					
+					{% for article in article_list %}			
+    					<a class="list-group-item" name="article" id="{{ article.id }}" onclick="getArticleData(this)">
     						<h4 class="list-group-item-heading"> {{ article.title }} </h4>
     						<p class="list-group-item-text"> {{ article.content }} </p>
-    					</a>    					
-					{% endfor %}
+    					</a>     					
+					{% endfor %}					
 				</div>
 			{% else %}
 				<h2 id="stachesHeadline"> You have no staches shaved! </h2>
@@ -57,7 +57,12 @@
 			{% endif %}				
 			</div>
 		</div>
+
 <p id = "footer">Web Science Team 2 : Altan, Irene, Josh, Josh, Justin, Nurgul</p>
+
+		<form id="hiddenForm" method="post" action="/article/">{% csrf_token %}
+			<input id="hiddenInput" style="display:none" type="submit" name="articleData" value="jaksjdlkasjlkd"></input>
+		</form>
 	</div>
 
 </div>
