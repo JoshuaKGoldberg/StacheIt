@@ -11,7 +11,12 @@
   {% if form.errors %}
   <p class="error">Invalid username or password</p>
   {% endif %}
-
+  {% if loggedout %}
+  <p id="logout">Successfully logged out.</p>
+  {% endif %}
+  {% if invalid %}
+  <p id="invalid">Invalid login. Please try again.</p>
+  {% endif %}
   <form id="login_form" action='/accounts/auth/' method='post'>{% csrf_token %}
       <label for="username"></label>
       <input type="text" name="username" placeholder="Username" value="" id="username">
