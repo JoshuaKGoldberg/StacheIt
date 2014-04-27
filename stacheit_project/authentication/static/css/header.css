@@ -1,0 +1,105 @@
+@font-face
+{
+ font-family: CenturyGothic;
+ src: url('Century_Gothic.TTF');
+}
+
+@font-face
+{
+ font-family: Thirsty;
+ src: url('Thirsty.otf');
+}
+
+.container
+{
+ max-width: 980px;
+}
+
+body
+{
+ background: #d39685;	
+}
+
+
+#logo
+{	
+ width: 200px;	
+ margin-top: 0;	
+}
+
+#wrapper
+{
+ background: #d39685;
+}
+
+#header
+{
+ background: #d39685;
+ text-align: center;
+}
+
+#libraryButton, #logoutButton
+{
+ margin: 45px 0 0 0;
+}
+
+#buttonContainer
+{
+ padding: 0 0 20px 0;
+ text-align: center;
+}
+
+.buttonStyle
+{
+ font-family:Thirsty;
+ font-size:25px;
+ text-transform:none;
+ padding: 30px 10px 30px 10px;
+ width: auto;
+ color: #b55d4b;
+ background:#fffcd8;
+ border-color: #D4A672;
+ border-radius: 8px;	
+}
+
+.buttonStyle:hover
+{
+ color: white;
+ background-color: #B55D4B;
+}
+
+#libraryButton
+{
+	
+}
+
+#logoutButton
+{
+	margin-left: 10px;
+}
+
+.row
+{
+ margin: 0;
+}
+
+.list-group-item
+{
+ background: #fffcd8;
+ padding: 20px 10% 20px 10% !important;
+}
+
+.list-group-item-heading
+{
+ font-family: CenturyGothic !important;
+ font-size: 24px !important;
+ color: #b55d4b !important;
+ padding : 0 0 0 0 !important;
+}
+
+.list-group-item-text
+{
+ font-family: CenturyGothic;
+ font-size: 14px;
+ padding : 0 0 0 0 !important;
+}

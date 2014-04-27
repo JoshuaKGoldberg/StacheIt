@@ -6,7 +6,7 @@ src: url('Century_Gothic.TTF');
 
 html
 {
- background: #fffcd8;
+ background: #d39685;
 }
 
 :focus
@@ -39,8 +39,9 @@ input
 a#sign-up
 {
  font-size: 12px;
+ font-weight: bold;
  padding: 0 0 0 4px;
- color: #D4A571;
+ color: white;
  text-decoration: none;
 }
 
@@ -63,7 +64,6 @@ label
  font-family: CenturyGothic;
 }
 
-form { }
 input[type=text], input[type=password]
 {
     background-color: white;
@@ -72,7 +72,7 @@ input[type=text], input[type=password]
     color: #979797;
     height: 36px;
     padding-left:10px;
-    width: 80%;
+    width: 100%;
 }
 input[type=submit]
 {
@@ -97,26 +97,17 @@ input[type=submit]:hover
 input[name=username]
 {
  margin-top: 10px;
+ background: url('../images/envelope.png') white no-repeat scroll 0 0;
+ background-size: 40px 30px;
+ padding-left:47px;
 }
 
-img#envelope, img#key
+input[name=password]
 {
- padding-right: 5%;
-}
-
-img#envelope
-{
- width: 15%;
- float: left;
- margin-top: 10px;
- border: none;
-}
-
-img#key
-{
- width: 15%;
- float: left;
- border: none;
+ margin-top:1px;
+ background: url('../images/key.png') white no-repeat scroll 2px 0;
+ background-size: 40px 30px;
+ padding-left:47px;
 }
 
 #fb-login 

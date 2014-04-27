@@ -1,72 +1,83 @@
-body
-{
-	background: #FFFCD8;	
-}
-
 @font-face
 {
 	font-family: CenturyGothic;
 	src: url('Century_Gothic.TTF');
 }
 
+@font-face
+{
+	font-family: Thirsty;
+	src: url('Thirsty.otf');
+}
+
+.list-group-item-heading
+{
+ padding: 15px;
+ font-family: CenturyGothic;
+ font-size: 16px;
+}
+
 #stachesHeadline
 {
+	font-family: Thirsty;
 	text-align: center;
-}
-
-#logo
-{
-	width: 200px;
-	margin-top: 3%;
-}
-
-#header
-{
-	text-align: center;
-}
-
-#logoContainer
-{
-	text-align: center;
-}
-
-#profile
-{
-	margin-top: 10px;
-	text-align: center;
-}
-
-#profilePic
-{
-	display: none;
-}
-
-#displayName
-{
-	margin-right: 25px;
-}
-
-#logoutButton
-{
-	width: 70px;
+	font-size: 30px;
 	color: white;
-	background-color: #B55D4B;
-	border-color: #D4A672;
-	border-radius: 5px;		
-	padding: 5px;
-	margin-left: 10px;
+	
 }
 
-#logoutButton:hover
-{
-	border-color: black;
-}
 
-#library
+
+#mostRecent
 {
 	width: inherit;	
 	margin-left: 20px;
 	margin-right: 20px;
+}
+
+#userInfo
+{
+	display: block;
+	width: 50%;
+	text-align: left;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	background: white;
+	border-radius: 8px;
+}
+
+#textInfo
+{
+	font-family: CenturyGothic;
+	font-size: 16px;
+	display: inline-block;		
+	vertical-align: text-bottom;
+	padding: 0 0 0 10%;
+
+}
+
+
+#picture
+{	
+	display: inline-block;	
+}
+
+#profilePic
+{
+	display: inline-block;
+	width: 200px;
+	margin-right: 5px;
+	
+
+}
+
+
+#mostRecent
+{
+	width: inherit;
+	text-align: justify;
+	margin-right: 20px;
+	margin-left: 20px;		
 }
 
 /* Small devices (tablets, 768px and up) */
@@ -76,22 +87,15 @@ body
 		text-align: left;
 	}
 
-	#library
+	#mostRecent
 	{
 		width: 600px;
 		margin-left: auto;
 		margin-right: auto;		
 	}
 
-	#profile
-	{
+	.buttonStyle
+	{		
 		margin-top: 25%; 
-	}
-
-	#profilePic
-	{
-		display: inline-block;
-		width: 40px;
-		margin-right: 5px;
 	}
 }

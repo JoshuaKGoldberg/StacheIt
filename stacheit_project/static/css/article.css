@@ -66,53 +66,6 @@ position: relative;
 	text-align: center;
 }
 
-#logo
-{	
-	width: 200px;	
-	margin-top: 0;	
-}
-
-#header
-{
- background: #d39685;
-	text-align: center;
-}
-
-#buttonContainer
-{
- padding: 0 0 20px 0;
-	text-align: center;
-}
-
-.buttonStyle
-{
-font-family:CenturyGothic;
-font-weight:bold;
-font-size:16px;
-text-transform:uppercase;
-padding: 30px 10px 30px 10px;
-        width: auto;
-	color: white;
-	background-color: #B55D4B;
-	border-color: #D4A672;
-	border-radius: 8px;		
-
-}
-
-.buttonStyle:hover
-{
-	border-color: black;
-}
-
-#libraryButton
-{
-	
-}
-
-#logoutButton
-{
-	margin-left: 10px;
-}
 
 #mostRecent
 {
