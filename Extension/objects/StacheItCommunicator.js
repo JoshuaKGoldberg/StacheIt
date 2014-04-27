@@ -23,7 +23,7 @@ function StacheItCommunicator(settings) {
         api_post;   // POST page information
     
     self.reset = function(settings) {
-        api_prefix = settings.api_prefix || "http:localhost:8000";
+        api_prefix = settings.api_prefix || "http://zonejm.com";
         api_user   = settings.api_user   || "/accounts/user_info";
         api_post   = settings.api_post   || "/api/article/?format=json";
     };
@@ -67,12 +67,13 @@ function StacheItCommunicator(settings) {
      *                               "content" and "title"
      */
     self.sendPage = function (information) {
+        console.log("Starting sendPage", arguments);
         var ajax = new XMLHttpRequest(),
             user_info;
         
         // Get the user account information from the API
         dialog_prog.innerText = "...processing user...";
-        ajax.open("GET", "http://localhost:8000" + api_post);
+        ajax.open("GET", api_prefix + api_user);
         ajax.send();
         
         ajax.onreadystatechange = function() {
@@ -81,10 +82,18 @@ function StacheItCommunicator(settings) {
             }
             dialog_prog.innerText = "...staching page...";
             
-
-	    information = {"content": "TEST FROM EXTENSION", "test": "testfield", "title": "This is a title", "user": "/api/user/1/"};
+            // Add the obtained user info to the request information
+            var info_extra = JSON.parse(ajax.responseText),
+                owner_fields = ["user", "id", "user_id", "owner"],
+                i;
+            information.username = info_extra.username;
+            
+            for(i = owner_fields.length - 1; i >= 0; --i) {
+                information[owner_fields[i]] = "/api/user/" + info_extra.id;
+            }
+            
             // Start the AJAX request as a POST to the api
-            ajax.open("POST", "http://localhost:8000" + api_post, true);
+            ajax.open("POST", api_prefix + api_post, true);
             
             // Send the POST information as JSON
             // http://zonejm.com/api/article/schema/?format=json
