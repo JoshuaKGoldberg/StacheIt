@@ -11,6 +11,7 @@ from authentication.models import Article, Stacher
 # from authentication.models import Annotation
 from django.utils.safestring import mark_safe
 from django.utils.encoding import force_unicode
+from django.utils.html import strip_tags
 from alchemyapi import AlchemyAPI
 import json
 
@@ -32,13 +33,18 @@ def auth_view(request):
 
 def loggedin(request):	
 	if request.user:		
-		articles = Article.objects.filter(owner = request.user)		
+		articles = Article.objects.filter(owner = request.user)						
 
 		for x in range(len(articles)):
-			articles[x].content = articles[x].content[0:200]
+			articles[x].content = strip_tags(articles[x].content)			
+			articles[x].content = articles[x].content[0:200]			
+			if(articles[x].content != ""):
+				articles[x].content += '.....'
+			if(articles[x].title == ""):
+				articles[x].title = "Untitled"
 	
 		if request.user.is_active:
-			return render_to_response('loggedin.html', {'full_name' : request.user.username, 'article_list' : articles})
+			return render_to_response('loggedin.html', {'full_name' : request.user.username, 'article_list' : articles}, context_instance=RequestContext(request))
 		else:
 			return HttpResponseRedirect('')
 
@@ -59,7 +65,12 @@ def render_article(request):
 	#if current aricle has content field
 	#render as is
 	#else call alchemy and save content
-	article = Article.objects.get(id= 2)
+
+	article_id = request.POST['articleData']
+	article = Article.objects.filter(id = article_id)[0]
+
+	print(article_id)
+	print(article.content)
 	if article.content:
 		return render_to_response('article.html', {'id' : article.id, 'data' : article.content, 'titleText' : article.title})
 	else:				
