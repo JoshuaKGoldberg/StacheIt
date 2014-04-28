@@ -32,7 +32,7 @@ def auth_view(request):
 		return HttpResponseRedirect('/accounts/invalid')
 
 def loggedin(request):	
-	if request.user:		
+	if request.user.is_authenticated():		
 		articles = Article.objects.filter(owner = request.user)						
 
 		for x in range(len(articles)):
@@ -47,6 +47,8 @@ def loggedin(request):
 			return render_to_response('loggedin.html', {'full_name' : request.user.username, 'article_list' : articles}, context_instance=RequestContext(request))
 		else:
 			return HttpResponseRedirect('')
+	else:
+		return HttpResponseRedirect('/login')
 
 def invalid_login(request):
 	return render_to_response('login.html', {"invalid": "Invalid login. Please try again."}, context_instance=RequestContext(request))
