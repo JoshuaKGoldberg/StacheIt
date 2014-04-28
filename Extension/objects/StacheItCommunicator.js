@@ -16,6 +16,7 @@ function StacheItCommunicator(settings) {
         dialog_in,
         dialog_main,
         dialog_img,
+        dialog_cancel,
         dialog_head,
         dialog_prog,
         
@@ -26,7 +27,10 @@ function StacheItCommunicator(settings) {
         // API URLs to... 
         api_prefix, // start the other APIs
         api_user,   // GET user info
-        api_post;   // POST page information
+        api_post,   // POST page information
+        
+        // Responses to different status codes from API calls
+        responses;
     
     self.reset = function(settings) {
         api_prefix = settings.api_prefix || "http://zonejm.com";
@@ -35,6 +39,10 @@ function StacheItCommunicator(settings) {
         
         body       = settings.body       || document.body;
         html       = settings.html       || body.parentNode;
+        
+        responses  = settings.responses || {
+            
+        };
     };
     
     /**
@@ -64,10 +72,16 @@ function StacheItCommunicator(settings) {
         dialog_prog = document.createElement("aside");
         dialog_prog.id = "stacheit_dialog_prog";
         dialog_prog.innerText = "...wait for it...";
+        
+        dialog_cancel = document.createElement("span");
+        dialog_cancel.id = "stacheit_dialog_cancel";
+        dialog_cancel.innerText = "cancel?";
+        dialog_cancel.onclick = function() { console.log("nope"); };
          
         // Add them to each other and the document
         dialog_in.appendChild(dialog_img);
         dialog_in.appendChild(dialog_main);
+        dialog_in.appendChild(dialog_cancel);
         dialog_main.appendChild(dialog_head);
         dialog_main.appendChild(dialog_prog);
         dialog_mid.appendChild(dialog_in);
@@ -120,7 +134,7 @@ function StacheItCommunicator(settings) {
                     return;
                 }
                 
-                dialog_prog.innerText = ajax.status + ': ' + ajax.statusText;
+                dialog_cancel.innerText = "close";
             }
         };
         
