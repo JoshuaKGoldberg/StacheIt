@@ -143,8 +143,8 @@ function StacheItParser(settings) {
         var tagName = element.tagName.toLowerCase(),
             arr, len, i;
         
-        // If the element is barred, remove it altogether and stop
-        if(barred_tags[tagName]) {
+        // If the element is barred or hidden, remove it altogether and stop
+        if(barred_tags[tagName] || elementNotDisplayed(element)) {
             element.parentElement.removeChild(element);
             return;
         }
@@ -166,7 +166,7 @@ function StacheItParser(settings) {
         
         // Recurse on each of the child elements
         for(i = 0, arr = element.children, len = arr.length; i < len; ++i) {
-            arr[i] && cleanElement(arr[i], tagName == "body");
+            arr[i] && cleanElement(arr[i]);
         }
     }
     
@@ -206,6 +206,40 @@ function StacheItParser(settings) {
         }
         
         return output;
+    }
+    
+    /**
+     * Determines whether an element isn't really dispayed to the user, such as
+     * from having a CSS style saying so, or having a tiny width or height
+     * 
+     * @param {Node} element
+     * @private
+     */
+    function elementNotDisplayed(element) {
+        var styles = getComputedStyle(element),
+            sizing = element.getClientRects()[0];
+        
+        // Explicit styles: display=none, visibility=hidden
+        if(styles.display === "none" || styles.visibility == "hidden") {
+            return true;
+        }
+        
+        // Implicit style: opacity<3
+        if(Number(styles.opacity) < 3) {
+            return true;
+        }
+        
+        // If no sizing, it's otherwise hidden
+        if(!sizing) {
+            return true;
+        }
+        
+        // Sizing: width<3, height<3
+        if(sizing.width < 3 || sizing.height < 3) {
+            return true;
+        }
+        
+        return false;
     }
     
     self.reset(settings || {});
