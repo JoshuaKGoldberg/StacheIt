@@ -1,5 +1,11 @@
 function getArticleData(source)
-{		
+{   		
+ 	$('#hiddenInput').attr('value', source.id);	
+ 	$('#hiddenForm').submit();
+ 
+
+    /* I don't know where this code came from?
+
     var ajax = new XMLHttpRequest();
     
     console.log(source);
@@ -33,6 +39,5 @@ function getArticleData(source)
       if(ajax.readyState != 4) { return; }    
         console.log("Got", status, ajax);
       }//END AJAX
-     }
-
+     }*/
 }
