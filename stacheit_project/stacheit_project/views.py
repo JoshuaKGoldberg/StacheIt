@@ -49,7 +49,7 @@ def loggedin(request):
 			return HttpResponseRedirect('')
 
 def invalid_login(request):
-	return render_to_response('login.html', {"invalid": "Invalid login. Please try again."})
+	return render_to_response('login.html', {"invalid": "Invalid login. Please try again."}, context_instance=RequestContext(request))
 
 def profile(request):
 	if request.user:
@@ -102,7 +102,7 @@ def logout(request):
 	auth.logout(request)
 	c = {}
 	c.update(csrf(request))
-	return render_to_response('login.html', {"loggedout": "Successfully logged out."})
+	return render_to_response('login.html', {"loggedout": "Successfully logged out."}, context_instance=RequestContext(request))
 
 def register_user(request):
 	form = StacheUserCreationForm()
@@ -118,7 +118,7 @@ def register_user(request):
 	return render_to_response('register.html', args)
 
 def register_success(request):
-	return render_to_response('register_success.html')
+	return render_to_response('login.html', {"reg_success": "Registration Successful."}, context_instance=RequestContext(request))
 
 def user_info(request):
   if request.user:

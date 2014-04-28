@@ -17,6 +17,9 @@
   {% if invalid %}
   <p id="invalid">Invalid login. Please try again.</p>
   {% endif %}
+  {% if reg_success %}
+  <p id="invalid">Registration Successful. Please Log In!</p>
+  {% endif %}
   <form id="login_form" action='/accounts/auth/' method='post'>{% csrf_token %}
       <label for="username"></label>
       <input type="text" name="username" placeholder="Username" value="" id="username">
