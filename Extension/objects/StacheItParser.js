@@ -38,9 +38,37 @@ function StacheItParser(settings) {
         // A dummy document used for parsing page_html
         dummy_doc,
         
-        // Disallowed element tags that can compromise security
-        barred_tags;
+        // Barred element tags that can compromise security or look bad
+        barred_tags,
+        
+        // Barred element attributes that can compromise security or look bad
+        barred_attrs;
     
+    
+    /**
+     * 
+     * 
+     * @constructor
+     */
+    self.reset = function (settings) {
+        var temp, i;
+        
+        barred_tags = settings.barred_tags || [
+            "embed", "frame", "iframe", "img", "meta", "noscript", "script"
+        ];
+        
+        barred_attrs = settings.barred_attrs || [
+            "class", "style"
+        ];
+        
+        // Convert barred_tags into a hash table for quick access
+        temp = {};
+        for(i = barred_tags.length - 1; i >= 0; --i) {
+            temp[barred_tags[i]] = true;
+        }
+        barred_tags = temp;
+        
+    }
     
     /* Simple gets & sets (for standalone usage)
      */
@@ -88,12 +116,14 @@ function StacheItParser(settings) {
      * @private
      */
     function parsePageHTML () {
+        var body, kids, i;
+        
         // Create the dummy document for parsing, and give it the page_html
         dummy_doc = document.implementation.createHTMLDocument("");
         dummy_doc.documentElement.innerHTML = page_html;
         
         // Recursively parse each element in the <body> (ignore the <head>)
-        var body = dummy_doc.body, kids, i;
+        body = dummy_doc.body;
         for(kids = body.children, i = kids.length - 1; i >= 0; --i) {
             cleanElement(kids[i]);
         }
@@ -119,10 +149,18 @@ function StacheItParser(settings) {
             return;
         }
         
-        // For each attribute, if it begins with "on", clear it
+        // For each barred attribute, if the element has it, nix that silliness
+        for(i = barred_attrs.length - 1; i >= 0; --i) {
+            console.log("Checking", barred_attrs[i]);
+            if(element.hasAttribute(barred_attrs[i])) {
+                element.removeAttribute(barred_attrs[i]);
+            }
+        }
+        
+        // For each remaining attribute, if it begins with "on", clear it
         for(i = 0, arr = element.attributes, len = arr.length; i < len; ++i) {
             if(arr[i] && arr[i].name && arr[i].name.indexOf("on") == 0) {
-                element.setAttribute(arr[i].name, false);
+                element.removeAttribute(arr[i].name);
             }
         }
         
@@ -170,17 +208,5 @@ function StacheItParser(settings) {
         return output;
     }
     
-
-    var reset = self.reset = function (settings) {
-        settings = settings || {};
-        
-        barred_tags = settings.barred_tags || ["embed", "frame", "iframe", "meta", "noscript", "script"];
-        
-        // Convert barred_tags into a hash table for quick access
-        for(var i in barred_tags)
-          barred_tags[barred_tags[i]] = true;
-        
-        return self;
-    }
-    return reset();
+    self.reset(settings || {});
 }
