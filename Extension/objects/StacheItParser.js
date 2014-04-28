@@ -54,8 +54,8 @@ function StacheItParser(settings) {
         var temp, i;
         
         barred_tags = settings.barred_tags || [
-            "embed", "form", "frame", "iframe",
-            "img", "meta", "noscript", "script"
+            "button", "embed", "form", "frame", "iframe",
+            "img", "input" "meta", "noscript", "script"
         ];
         
         barred_attrs = settings.barred_attrs || [
@@ -145,7 +145,7 @@ function StacheItParser(settings) {
             arr, len, i;
         
         // If the element is barred or hidden, remove it altogether and stop
-        if(barred_tags[tagName] || elementNotDisplayed(element)) {
+        if(barred_tags[tagName] || elementNotDisplayed(element, tagName)) {
             element.parentElement.removeChild(element);
             return;
         }
@@ -212,10 +212,12 @@ function StacheItParser(settings) {
      * Determines whether an element isn't really dispayed to the user, such as
      * from having a CSS style saying so, or having a tiny width or height
      * 
-     * @param {Node} element
+     * @param {Node} element   The HTML element in question
+     * @param {String} tagName   The tagName of the element, in lower-case
+     * @return {Boolean} Whether the element is blank (and should be removed)
      * @private
      */
-    function elementNotDisplayed(element) {
+    function elementNotDisplayed(element, tagName) {
         var styles = getComputedStyle(element),
             sizing = element.getClientRects()[0];
         
@@ -226,6 +228,11 @@ function StacheItParser(settings) {
         
         // Implicit style: opacity<3
         if(styles.opacity !== "" && Number(styles.opacity) < 3) {
+            return true;
+        }
+        
+        // Blank elements that aren't line(/breaks) just take up space
+        if(!element.innerText && tagName !== "br" && tagName !== "hr") {
             return true;
         }
         
