@@ -138,6 +138,8 @@ function StacheItCommunicator(settings) {
                 // The process is now done, so let the user close the dialog
                 dialog_cancel.innerText = "close";
                 dialog_cancel.onclick = self.close;
+                html.onclick = self.close;
+                html.style.cursor = "pointer";
             }
         };
         
