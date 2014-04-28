@@ -24,6 +24,9 @@ function StacheItCommunicator(settings) {
         body,
         html,
         
+        // AJAX object for API calls
+        ajax,
+        
         // API URLs to... 
         api_prefix, // start the other APIs
         api_user,   // GET user info
@@ -76,7 +79,7 @@ function StacheItCommunicator(settings) {
         dialog_cancel = document.createElement("span");
         dialog_cancel.id = "stacheit_dialog_cancel";
         dialog_cancel.innerText = "cancel?";
-        dialog_cancel.onclick = function() { console.log("nope"); };
+        dialog_cancel.onclick = self.abort;
          
         // Add them to each other and the document
         dialog_in.appendChild(dialog_img);
@@ -99,11 +102,11 @@ function StacheItCommunicator(settings) {
      *                               "content" and "title"
      */
     self.sendPage = function (information) {
-        var ajax = new XMLHttpRequest(),
-            user_info;
+        var user_info;
         
         // Get the user account information from the API
         dialog_prog.innerText = "...processing user...";
+        ajax = new XMLHttpRequest();
         ajax.open("GET", api_prefix + api_user);
         ajax.send();
         
@@ -135,12 +138,44 @@ function StacheItCommunicator(settings) {
                 }
                 
                 dialog_cancel.innerText = "close";
+                dialog_cancel.onclick = self.close;
             }
         };
         
 
 
         return self;
+    };
+    
+    /**
+     * Calls the AJAX (XMLHttpRequest) object's .abort function to cancel
+     * any ongoing staching calls
+     * 
+     * @remarks Call this when dialog_cancel.innerText is "close"
+     */
+    self.abort = function() {
+        if(ajax && ajax.abort) {
+            ajax.abort();
+        }
+        
+        if(dialog_prog) {
+            dialog_prog.innerText = "canceled :(";
+        }
+        if(dialog_cancel) {
+            dialog_cancel.innerText = "close";
+        }
+    };
+    
+    /**
+     * Removes the HTML elements from the body, and returns body and html's
+     * classes back to normal
+     * 
+     * @remarks Call this when dialog_cancel.innerText is "close"
+     */
+    self.close = function() {
+        body.removeChild(dialog_out);
+        body.className = body.className.replace("staching", "");
+        html.className = html.className.replace("staching", "");
     }
     
     

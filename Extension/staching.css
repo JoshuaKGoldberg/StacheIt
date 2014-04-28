@@ -61,7 +61,7 @@ html.staching, body.staching {
     display: inline-block !important;
     margin: 7px 0 140px 0 !important;
     color: #dbb !important;
-    cursor: pointe !important;
+    cursor: pointer !important;
     transition: 140ms color !important;
 }
 #stacheit_dialog_cancel:hover {
