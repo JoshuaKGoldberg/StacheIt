@@ -37,20 +37,22 @@
 			</div>
 		</div>
 		<hr/>
+<h3 id="stachesHeadline"> Account Information </h3>
 		<div id="userInfo" class="row">
-			<div id="picture">
+			<!--<div id="picture">
 				<img id="profilePic" src="{% static 'images\defaultProfile.jpg' %}" alt="Profile Picture"/>
-			</div>
+			</div>-->
+
 			<div id="textInfo">
 				<p> {% if username %}
-						{{ username }}					
+						Username: {{ username }}					
 					{% endif %} </p>
-				<p> {{ email }} </p>
+				<p>Email: {{ email }} </p>
 				<p> Join Date: {{ date_created }} <p>
 			</div>
 		</div>	
 		<div id="mostRecent" class="row">				
-			<h3 id="stachesHeadline"> Most Recent Staches </h3>
+			<h3 id="stachesHeadline"> Recent Staches </h3>
 			<div class="list-group">
 				{% for article in article_list %}
 					<a class="list-group-item">

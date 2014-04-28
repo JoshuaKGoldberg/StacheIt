@@ -43,21 +43,24 @@ body
 #userInfo
 {
 	display: block;
-	width: 50%;
+	width: 100%;
 	text-align: left;
 	margin: 0 auto;
 	border: 1px solid #ccc;
-	background: white;
+	background: #fffcd8;
 	border-radius: 8px;
+	max-width:600px;
+	padding-top:15px;
 }
 
 #textInfo
 {
 	font-family: CenturyGothic;
-	font-size: 16px;
+	font-size: 15px;
 	display: inline-block;		
 	vertical-align: text-bottom;
 	padding: 0 0 0 10%;
+	color: #b55d4b;
 
 }
 
