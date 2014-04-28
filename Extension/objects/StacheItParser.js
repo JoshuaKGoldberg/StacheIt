@@ -145,6 +145,7 @@ function StacheItParser(settings) {
         
         // If the element is barred or hidden, remove it altogether and stop
         if(barred_tags[tagName] || elementNotDisplayed(element)) {
+            console.log("Killing", element.outerHTML, "for", barred_tags[tagName], elementNotDisplayed(element));
             element.parentElement.removeChild(element);
             return;
         }
@@ -225,13 +226,13 @@ function StacheItParser(settings) {
         }
         
         // Implicit style: opacity<3
-        if(Number(styles.opacity) < 3) {
+        if(styles.opacity !== "" && Number(styles.opacity) < 3) {
             return true;
         }
         
-        // If no sizing, it's otherwise hidden
+        // If no sizing, it may or may not be hiden, so let it be ok...
         if(!sizing) {
-            return true;
+            return false;
         }
         
         // Sizing: width<3, height<3
