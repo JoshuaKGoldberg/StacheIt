@@ -29,7 +29,7 @@ h2 {
     text-align:center;
     color: #fffcd8;
     font-family: CenturyGothic;
-    font-size: 26px !important;
+    font-size: 23px !important;
 }
 
 .masthead {
@@ -87,10 +87,29 @@ img#logo {
  float: right;
 }
 
+.jumbotron
+{
+ padding-top:0 !important;
+}
 .homebutton
 {
+ 
  padding: 40px 40px 40px 40px !important;
  font-size: 30px !important;
+ font-family:Thirsty !important;
+ text-transform:none;
+ padding: 30px 10px 30px 10px;
+ width: auto;
+ color: #b55d4b;
+ background:#fffcd8;
+ border-color: #D4A672;
+ border-radius: 8px;
+}
+
+.homebutton:hover
+{
+ color: #fffcd8;
+ background-color: #B55D4B;
 }
 @media only screen and (min-width: 1200px) and ( min-height: 770px) {
     #footer {
