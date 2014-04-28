@@ -93,6 +93,7 @@ body
 {
  background: #fffcd8;
  padding: 20px 10% 20px 10% !important;
+ overflow-wrap: break-word !important;
 }
 
 .list-group-item-heading
@@ -129,4 +130,15 @@ p#footer
  color: white;
  padding: 20px 0 0 0;
  text-align: left;
+}
+
+@media (min-width: 768px) {	
+	#buttonContainer
+	{
+	 float: right;
+	}
+	.buttonStyle
+	{		
+		margin-top: 25%; 
+	}
 }
