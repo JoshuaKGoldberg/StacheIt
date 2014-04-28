@@ -12,7 +12,7 @@
 
 .container
 {
- max-width: 980px;
+ max-width: 980px !important;
 }
 
 body
@@ -112,10 +112,14 @@ body
 
 #footer
 {
- background: none;
- height: 100px;
- width: 100%;
- border-top: 1px solid white;
+  max-width: 980px;
+  /*position: absolute;*/
+  margin: 20px auto 30px auto;
+  /*left: 0%;
+  right: 0%;
+  bottom: 0%;*/
+  border-top: 1px solid white;
+  
 }
 
 p#footer
@@ -124,4 +128,5 @@ p#footer
  font-size: 14px;
  color: white;
  padding: 20px 0 0 0;
+ text-align: left;
 }
