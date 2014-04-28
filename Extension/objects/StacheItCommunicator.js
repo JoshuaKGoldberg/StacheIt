@@ -29,23 +29,18 @@ function StacheItCommunicator(settings) {
         
         // API URLs to... 
         api_prefix, // start the other APIs
-        api_user,   // GET user info
+        api_info,   // GET user info
         api_post,   // POST page information
-        
-        // Responses to different status codes from API calls
-        responses;
+        api_user;   // Where to redirect new tabs
     
     self.reset = function(settings) {
         api_prefix = settings.api_prefix || "http://zonejm.com";
-        api_user   = settings.api_user   || "/accounts/user_info";
+        api_info   = settings.api_info   || "/accounts/user_info";
         api_post   = settings.api_post   || "/api/article/?format=json";
+        api_user   = settings.api_user   || "/accounts/loggedin";
         
         body       = settings.body       || document.body;
         html       = settings.html       || body.parentNode;
-        
-        responses  = settings.responses || {
-            
-        };
     };
     
     /**
@@ -107,7 +102,7 @@ function StacheItCommunicator(settings) {
         // Get the user account information from the API
         dialog_prog.innerText = "...processing user...";
         ajax = new XMLHttpRequest();
-        ajax.open("GET", api_prefix + api_user);
+        ajax.open("GET", api_prefix + api_info);
         ajax.send();
         
         // Stop the body from overflowing (it looks nicer)
@@ -137,11 +132,37 @@ function StacheItCommunicator(settings) {
                     return;
                 }
                 
+                // Display the results, opening the main site if necessary
+                self.displayResults(ajax);
+                
+                // The process is now done, so let the user close the dialog
                 dialog_cancel.innerText = "close";
                 dialog_cancel.onclick = self.close;
             }
         };
         
+        /**
+         * When the main AJAX API call returns, set the displayed text based on
+         * whether it was a successful staching.
+         * 
+         * @param {XMLHttpRequest} ajax
+         */
+        self.displayResults = function(ajax) {
+            // If the status is is 201, that's great - open the main site
+            if(ajax.status == 201) {
+                dialog_prog.innerText = "Stached!";
+                try {
+                    window.open(api_prefix + '/' + api_user, "_blank").focus();
+                } catch(err) {
+                    console.log("Error opening " + api_user + " tab...", err);
+                }
+                return;
+            }
+            // Anything else is an error.
+            else {
+                dialog_prog.innerText = "There was an error... :(";
+            }
+        };
 
 
         return self;
