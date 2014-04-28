@@ -199,6 +199,9 @@ function StacheItCommunicator(settings) {
         body.removeChild(dialog_out);
         body.className = body.className.replace("staching", "");
         html.className = html.className.replace("staching", "");
+        if(html.onclick === self.close) {
+            html.onclick = undefined;
+        }
     }
     
     
