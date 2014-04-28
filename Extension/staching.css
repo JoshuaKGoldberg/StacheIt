@@ -28,6 +28,14 @@ html.staching, body.staching {
     color: black !important;
 }
 
+/* Displayed links should have styles given back */
+#stacheit_dialog_out a {
+    font-weight: bold !important;
+}
+#stacheit_dialog_out a:hover {
+    text-decoration: underline !important;
+}
+
 #stacheit_dialog_out {
     position: fixed !important;
     top: 0 !important;
