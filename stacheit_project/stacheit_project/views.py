@@ -69,8 +69,8 @@ def render_article(request):
 	article_id = request.POST['articleData']
 	article = Article.objects.filter(id = article_id)[0]
 
-	print(article_id)
-	print(article.content)
+	print(article_id.encode('utf-8'))
+	print(article.content.encode('utf-8'))
 	if article.content:
 		return render_to_response('article.html', {'id' : article.id, 'data' : article.content, 'titleText' : article.title})
 	else:				
