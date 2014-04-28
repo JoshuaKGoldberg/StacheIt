@@ -14,8 +14,14 @@ function StacheItCommunicator(settings) {
         dialog_out,
         dialog_mid,
         dialog_in,
-        dialog,
+        dialog_main,
+        dialog_img,
+        dialog_head,
         dialog_prog,
+        
+        // Quick references to pre-existing HTML elements
+        body,
+        html,
         
         // API URLs to... 
         api_prefix, // start the other APIs
@@ -26,6 +32,9 @@ function StacheItCommunicator(settings) {
         api_prefix = settings.api_prefix || "http://zonejm.com";
         api_user   = settings.api_user   || "/accounts/user_info";
         api_post   = settings.api_post   || "/api/article/?format=json";
+        
+        body       = settings.body       || document.body;
+        html       = settings.html       || body.parentNode;
     };
     
     /**
@@ -41,17 +50,26 @@ function StacheItCommunicator(settings) {
         dialog_in = document.createElement("div");
         dialog_in.id = "stacheit_dialog_in";
         
-        dialog = document.createElement("h1");
-        dialog.id = "stacheit_dialog";
-        dialog.innerText = "Staching";
+        dialog_main = document.createElement("div");
+        dialog_main.id = "stacheit_dialog_main";
+        
+        dialog_img = document.createElement("img");
+        dialog_img.id = "stacheit_dialog_img";
+        dialog_img.src = api_prefix + "/static/images/papier-stache.png";
+        
+        dialog_head = document.createElement("h1");
+        dialog_head.id = "stacheit_dialog_head";
+        dialog_head.innerText = "Staching";
         
         dialog_prog = document.createElement("aside");
         dialog_prog.id = "stacheit_dialog_prog";
         dialog_prog.innerText = "...wait for it...";
          
         // Add them to each other and the document
-        dialog_in.appendChild(dialog);
-        dialog_in.appendChild(dialog_prog);
+        dialog_in.appendChild(dialog_img);
+        dialog_in.appendChild(dialog_main);
+        dialog_main.appendChild(dialog_head);
+        dialog_main.appendChild(dialog_prog);
         dialog_mid.appendChild(dialog_in);
         dialog_out.appendChild(dialog_mid);
         document.body.appendChild(dialog_out);
@@ -67,7 +85,6 @@ function StacheItCommunicator(settings) {
      *                               "content" and "title"
      */
     self.sendPage = function (information) {
-        console.log("Starting sendPage", arguments);
         var ajax = new XMLHttpRequest(),
             user_info;
         
@@ -75,6 +92,10 @@ function StacheItCommunicator(settings) {
         dialog_prog.innerText = "...processing user...";
         ajax.open("GET", api_prefix + api_user);
         ajax.send();
+        
+        // Stop the body from overflowing (it looks nicer)
+        html.className += "staching";
+        body.className += "staching";
         
         ajax.onreadystatechange = function() {
             if(ajax.readyState !== 4) {
@@ -85,11 +106,9 @@ function StacheItCommunicator(settings) {
             // Add the obtained user info to the request information
             var info_extra = JSON.parse(ajax.responseText);
             information.user = "/api/user/" + info_extra.id + "/";
-            console.log("Sending info", information);
             
             // Start the AJAX request as a POST to the api
             ajax.open("POST", api_prefix + api_post, true);
-            console.log("Opening", api_prefix + api_post);
             
             // Send the POST information as JSON
             // http://zonejm.com/api/article/schema/?format=json
@@ -101,7 +120,6 @@ function StacheItCommunicator(settings) {
                     return;
                 }
                 
-                console.log("Got", status, ajax);
                 dialog_prog.innerText = ajax.status + ': ' + ajax.statusText;
             }
         };

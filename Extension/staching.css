@@ -8,13 +8,23 @@
 	src: url('http://zonejm.com/static/css/Thirsty.otf');
 }
 
+html.staching, body.staching {
+    overflow: hidden;
+}
+
 #stacheit_dialog_out {
     position: fixed !important;
     top: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
     left: 0 !important;
-    background: rgba(63,35,28,.84) !important;
+    /* background: rgba(63,35,28,.84) !important; */
+    background: -moz-linear-gradient(-45deg,  rgba(63,36,28,.84) 28%, rgba(,.77) 44%, rgba(63,35,28,.91) 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(28%,rgba(63,36,28,.84)), color-stop(44%,rgba(77,49,42,.77)), color-stop(100%,rgba(63,35,28,.91)));
+    background: -webkit-linear-gradient(-45deg,  rgba(63,36,28,.84) 28%,rgba(77,49,42,.77) 44%,rgba(63,35,28,.91) 100%);
+    background: -o-linear-gradient(-45deg,  rgba(63,36,28,.84) 28%,rgba(77,49,42,.77) 44%,rgba(63,35,28,.91) 100%);
+    background: -ms-linear-gradient(-45deg,  rgba(63,36,28,.84) 28%,rgba(77,49,42,.77) 44%,rgba(63,35,28,.91) 100%);
+    background: linear-gradient(135deg,  rgba(63,36,28,.84) 28%,rgba(77,49,42,.77) 44%,rgba(63,35,28,.91) 100%);
     z-index: 1170 !important;
     font-family: Century Gothic !important;
 }
@@ -33,16 +43,41 @@
     text-align: center !important;
 }
 
-#stacheit_dialog {
+#stacheit_dialog_img {
+    height: 210px;
+    background: -moz-radial-gradient(bottom, ellipse cover,  rgba(0,0,0,0.65) 0%, rgba(211,150,133,0) 70%);
+    background: -webkit-gradient(radial, center bottom, 0px, center center, 70%, color-stop(0%,rgba(0,0,0,0.65)), color-stop(70%,rgba(211,150,133,0)));
+    background: -webkit-radial-gradient(bottom, ellipse cover,  rgba(0,0,0,0.65) 0%,rgba(211,150,133,0) 70%);
+    background: -o-radial-gradient(bottom, ellipse cover,  rgba(0,0,0,0.65) 0%,rgba(211,150,133,0) 70%);
+    background: -ms-radial-gradient(bottom, ellipse cover,  rgba(0,0,0,0.65) 0%,rgba(211,150,133,0) 70%);
+    background: radial-gradient(ellipse at bottom,  rgba(0,0,0,0.65) 0%,rgba(211,150,133,0) 70%);
+}
+
+#stacheit_dialog_main {
+    margin-bottom: 140px;
+    box-shadow: 0 0 35px black, 0 0 140px rgba(0,0,0,.84) !important;
+}
+
+#stacheit_dialog_head {
     margin: 0 !important;
     padding: 14px !important;
-    background: rgba(255,252,215,.91) !important;
-    font-size: 49px !important;
+    font-size: 56px !important;
     font-family: Thirsty !important;
+    color: white !important;
+    line-height: 140% !important;
+    /* background: rgba(210,140,117,.91) !important; */
+    background: -moz-linear-gradient(left,  rgba(210,140,126,0.7) 0%, rgba(211,150,133,1) 50%, rgba(210,140,126,0.7) 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(210,140,126,0.7)), color-stop(50%,rgba(211,150,133,1)), color-stop(100%,rgba(210,140,126,0.7)));
+    background: -webkit-linear-gradient(left,  rgba(210,140,126,0.7) 0%,rgba(211,150,133,1) 50%,rgba(210,140,126,0.7) 100%);
+    background: -o-linear-gradient(left,  rgba(210,140,126,0.7) 0%,rgba(211,150,133,1) 50%,rgba(210,140,126,0.7) 100%);
+    background: -ms-linear-gradient(left,  rgba(210,140,126,0.7) 0%,rgba(211,150,133,1) 50%,rgba(210,140,126,0.7) 100%);
+    background: linear-gradient(to right,  rgba(210,140,126,0.7) 0%,rgba(211,150,133,1) 50%,rgba(210,140,126,0.7) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3d39685', endColorstr='#b3d39685',GradientType=1 );
+
 }
 
 #stacheit_dialog_prog {
     padding: 7px !important;
-    background: rgba(255,252,215,.77) !important;
+    background: rgba(255,252,215,.91) !important;
     font-size: 21px !important;
 }
