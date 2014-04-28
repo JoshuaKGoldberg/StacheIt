@@ -54,11 +54,12 @@ function StacheItParser(settings) {
         var temp, i;
         
         barred_tags = settings.barred_tags || [
-            "embed", "frame", "iframe", "img", "meta", "noscript", "script"
+            "embed", "form", "frame", "iframe",
+            "img", "meta", "noscript", "script"
         ];
         
         barred_attrs = settings.barred_attrs || [
-            "class", "style"
+            "class", "id", "style"
         ];
         
         // Convert barred_tags into a hash table for quick access
