@@ -115,6 +115,17 @@ function StacheItCommunicator(settings) {
             }
             dialog_prog.innerText = "...staching page...";
             
+            // If the response is "Kanye West", you're logged out - don't stache
+            console.log("Got", ajax.responseText);
+            if(ajax.responseText.trim() === "Kanye West") {
+                dialog_prog.innerHTML = "You should log in first!"
+                        + "<br><a href='" + api_prefix + "' target='_blank'>" 
+                        + api_prefix + "</a>";
+                dialog_cancel.innerText = "close";
+                dialog_cancel.onclick = self.close;
+                return;
+            }
+            
             // Add the obtained user info to the request information
             var info_extra = JSON.parse(ajax.responseText);
             information.user = "/api/user/" + info_extra.id + "/";
@@ -187,6 +198,8 @@ function StacheItCommunicator(settings) {
         if(dialog_cancel) {
             dialog_cancel.innerText = "close";
         }
+        
+        html.onclick = self.close;
     };
     
     /**

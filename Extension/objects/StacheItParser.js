@@ -145,14 +145,12 @@ function StacheItParser(settings) {
         
         // If the element is barred or hidden, remove it altogether and stop
         if(barred_tags[tagName] || elementNotDisplayed(element)) {
-            console.log("Killing", element.outerHTML, "for", barred_tags[tagName], elementNotDisplayed(element));
             element.parentElement.removeChild(element);
             return;
         }
         
         // For each barred attribute, if the element has it, nix that silliness
         for(i = barred_attrs.length - 1; i >= 0; --i) {
-            console.log("Checking", barred_attrs[i]);
             if(element.hasAttribute(barred_attrs[i])) {
                 element.removeAttribute(barred_attrs[i]);
             }

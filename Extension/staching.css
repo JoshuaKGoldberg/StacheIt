@@ -21,7 +21,9 @@ html.staching, body.staching {
     border: 0 !important;
     float: none !important;
     box-shadow: none !important;
+    font-weight: normal !important;
     text-align: center !important;
+    text-decoration: none !important;
     text-shadow: none !important;
     color: black !important;
 }
