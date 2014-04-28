@@ -4,6 +4,11 @@
  * Inserted into a page when the context menu option is clicked
  */
 
+// If the page is already staching, don't do anything
+if(document.body.className.indexOf("staching") !== -1) {
+    return;
+}
+ 
 // Start parsing the page immediately
 (window.SIParser = new StacheItParser())
     .parsePage({
