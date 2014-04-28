@@ -116,7 +116,6 @@ function StacheItCommunicator(settings) {
             dialog_prog.innerText = "...staching page...";
             
             // If the response is "Kanye West", you're logged out - don't stache
-            console.log("Got", ajax.responseText);
             if(ajax.responseText.trim() === "Kanye West") {
                 dialog_prog.innerHTML = "You should log in first!"
                         + "<br><a href='" + api_prefix + "' target='_blank'>" 

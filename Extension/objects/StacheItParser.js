@@ -55,7 +55,7 @@ function StacheItParser(settings) {
         
         barred_tags = settings.barred_tags || [
             "button", "embed", "form", "frame", "iframe",
-            "img", "input" "meta", "noscript", "script"
+            "img", "input", "meta", "noscript", "script"
         ];
         
         barred_attrs = settings.barred_attrs || [
@@ -125,7 +125,7 @@ function StacheItParser(settings) {
         
         // Recursively parse each element in the <body> (ignore the <head>)
         body = dummy_doc.body;
-        for(kids = body.children, i = kids.length - 1; i >= 0; --i) {
+        for(kids = body.children, i = 0; i < kids.length; ++i) {
             cleanElement(kids[i]);
         }
         
